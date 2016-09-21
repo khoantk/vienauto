@@ -138,6 +138,7 @@
     <Compile Include="Extension\Type\TypeExtensions.cs" />
     <Compile Include="IO\Streamer.cs" />
     <Compile Include="Mvc\BaseController.cs" />
+    <Compile Include="Mvc\Helper\BundleConfigHelper.cs" />
     <Compile Include="Mvc\Helper\ClaimsIdentityHelper.cs" />
     <Compile Include="Nhibernate\Base\Repository.cs" />
     <Compile Include="Nhibernate\CachingConfiguration\FileCache.cs" />

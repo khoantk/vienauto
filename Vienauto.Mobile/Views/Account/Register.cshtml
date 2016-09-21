@@ -1,0 +1,270 @@
+﻿@model VienautoMobile.Models.Form.AccountFormModel
+@{
+    Layout = null;
+}
+
+<!-- Css -->
+@Styles.Render("~/bundles/css/register")
+<!-- Js -->
+@Scripts.Render("~/bundles/js/jquery")
+@Scripts.Render("~/bundles/js/jqueryval")
+@Scripts.Render("~/bundles/js/bootstrap")
+@Scripts.Render("~/bundles/js/core")
+@Scripts.Render("~/bundles/js/register")
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Register</title>
+</head>
+<body>
+    <div class="container">
+        <div id="selectOption">
+            <input id="radAgent" type="radio" name="form" checked />&nbsp;Dành cho hãng và đại lý
+            <input id="radMember" type="radio" name="form" />&nbsp;Dành cho thành viên
+        </div>
+        <ul id="tabs">
+            <li class="member active">Thông tin thành viên</li>
+            <li class="agent">Thông tin hãng & đại lý</li>
+        </ul>
+        <ul id="tab">
+            <li id="memberForm" class="tab active">
+                <div style="padding: 10px; line-height: 25px;">
+                    <input type="hidden" id="user_id" />
+                    <div id="show-if-have-no-login" style="position: relative;">
+                        <div>
+                            <strong>Họ tên của bạn</strong>
+                        </div>
+                        <div>
+                            <input type="text" id="input-hoten-toregister" placeholder="Họ và chữ lót" class="input-register hoten" />
+                            <input type="text" id="input-ten-toregister" placeholder="Tên" class="input-register ten" />
+                        </div>
+                        <div id="error_hoten" class="register_error">
+                        </div>
+                        <div class="pt-line">
+                            <strong>Địa chỉ email</strong>
+                        </div>
+                        <div>
+                            <input type="text" placeholder="@" class="input-register email" id="input-email-toregister" />
+                        </div>
+                        <div id="error_email" class="register_error">
+                        </div>
+                        <div class="pt-line">
+                            <strong>Tạo mật khẩu</strong>
+                        </div>
+                        <div>
+                            <input type="password" class="input-register email" id="input-pass-toregister" />
+                        </div>
+                        <div id="error_password" class="register_error">
+                        </div>
+                        <div class="pt-line">
+                            <strong>Xác nhận mật khẩu của bạn</strong>
+                        </div>
+                        <div>
+                            <input type="password" class="input-register email" id="repasss-toverify" />
+                        </div>
+                        <div id="error_repass" class="register_error">
+                        </div>
+                        <div class="pt-line">
+                            <strong>Câu hỏi bí mật</strong>
+                        </div>
+                        <div>
+                            <div lang="0" class="chose-many-items input-quest" id="input-quest-toregister">
+                                Chọn một câu hỏi và trả lời
+                            </div>
+                        </div>
+                        <div id="error_question" class="register_error">
+                        </div>
+                        <div class="pt-line">
+                            <strong>Câu trả lời của riêng bạn</strong>
+                        </div>
+                        <div>
+                            <input type="text" class="input-register email" id="input-answer-toregister" />
+                        </div>
+                        <div id="error_answer" class="register_error">
+                        </div>
+                        <div class="pt-line">
+                            <strong>Điện thoại bàn</strong>
+                        </div>
+                        <div>
+                            <input type="text" class="input-register email" id="input-phone-toregister" value="+84" />
+                        </div>
+                        <div class="pt-line">
+                            <strong>Di động</strong>
+                        </div>
+                        <div>
+                            <input type="text" class="input-register email" id="input-mobi-to-register" value="+84" />
+                        </div>
+                        <div style="margin-top: 20px; line-height: 18px;">
+                            <input type="checkbox" id="agree-with-scttos" />Tôi đồng ý với <a href="javascript:;"
+                                                                                              onclick="window_location_newhash('#dieu-khoan-thanh-vien')">điều khoản thành viên</a>
+                            và <a href="javascript:;" onclick="window_location_newhash('#chinh-sach-bao-mat')">
+                                Chính
+                                sách bảo mật
+                            </a> được ban hành bởi hệ thống <b>Vienauto.com</b>
+                        </div>
+                        <div id="error_agree" class="register_error">
+                        </div>
+                        <div class="pt-line" align="center">
+                            <div class="u7wu8732hu" style="width: 80px;" id="bt_actionregister_click">
+                                Đăng ký
+                            </div>
+                        </div>
+                    </div>
+                    <div id="show-if-registed">
+                    </div>
+                </div>
+            </li>
+            <li id="agentForm" class="tab">
+                <div style="padding: 10px; line-height: 25px;">
+                    <div id="show-register-agent" style="position: relative;">
+                        <div>
+                            Chọn hãng phân phối:
+                        </div>
+                        <span id="fill_hangphanphoi_dl" runat="server"></span>
+                        <div class="pt-line">
+                            Chọn đại lý:
+                        </div>
+                        <select id="dailycha_dll"></select>
+                        <div class="pt-line">
+                            <strong>Tên công ty: </strong>
+                        </div>
+                        <div>
+                            <input type="text" id="company_dl" class="input-register email" />
+                        </div>
+                        <div class="pt-line">
+                            <strong>Địa chỉ giao dịch: </strong>
+                        </div>
+                        <div>
+                            <input type="text" id="address_dl" class="input-register email" />
+                        </div>
+                        <div class="pt-line">
+                            <strong>Mã số thuế: </strong>
+                        </div>
+                        <div>
+                            <input type="text" id="masothue_dl" style="width: 150px;" class="input-register email" />
+                        </div>
+                        <div class="pt-line">
+                            <strong>Người đại diện: </strong>
+                        </div>
+                        <div>
+                            <input type="text" id="fullname_dl" class="input-register email" />
+                        </div>
+                        <div class="pt-line">
+                            Điện thoại:
+                        </div>
+                        <div>
+                            <input type="text" id="phone_dl" style="width: 150px;" class="input-register email"
+                                   readonly="readonly" placeholder="+84" />
+                        </div>
+                        <div class="pt-line">
+                            Di động:
+                        </div>
+                        <div>
+                            <input type="text" id="mobile_dl" style="width: 150px;" class="input-register email"
+                                   readonly="readonly" placeholder="+84" />
+                        </div>
+                        <div class="pt-line">
+                            Email:
+                        </div>
+                        <div>
+                            <input type="text" id="email_dl" class="input-register email" placeholder="@" readonly="readonly" />
+                        </div>
+                        <div class="pt-line">
+                            Vị trí:
+                        </div>
+                        <span id="fill_vitri_dl" runat="server"></span>
+                        <div class="pt-line">
+                            Tổng chi nhánh:
+                        </div>
+                        <select id="tongchinhanh_dl" class="select_custome">
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">> 8</option>
+                        </select>
+                        <div class="pt-line">
+                            Số xe giao dịch:
+                        </div>
+                        <select id="soxegiaodich_dl" class="select_custome">
+                            <option value="nhỏ hơn 5 chiếc">&lt; 5</option>
+                            <option value="10 chiếc">10</option>
+                            <option value="15 chiếc">15</option>
+                            <option value="20 chiếc">20</option>
+                            <option value="25 chiếc">25</option>
+                            <option value="30 chiếc">30</option>
+                            <option value="lớn hơn 30 chiếc">&gt; 30</option>
+                        </select>
+                        &nbsp;&nbsp;&nbsp;Chiếc/tháng
+                        <div class="pt-line">
+                            Xe phân phối:
+                        </div>
+                        <select id="xephanphoi_dl" class="select_custome">
+                            <option value="Trong nước">Trong nước</option>
+                            <option value="Nhập khẩu">Nhập khẩu</option>
+                            <option value="Trong nước và Nhập khẩu">Trong nước và nhập khẩu</option>
+                        </select>
+                        <div class="pt-line">
+                            Bạn cần tư vấn thêm:
+                        </div>
+                        <div>
+                            <input type="radio" name="tuvan_dl" value="Có" checked="checked" />
+                            Có&nbsp;&nbsp;&nbsp;
+                            <input type="radio" name="tuvan_dl" value="Không" />
+                            Không
+                        </div>
+                        <div class="pt-line">
+                            Bạn có khách hàng nhờ:
+                        </div>
+                        <select id="cokhachhang_dl" class="select_custome">
+                            <option value="Tiếp thị quảng cáo">Tiếp thị quảng cáo</option>
+                            <option value="Người quen biết">Người quen biết</option>
+                            <option value="Cách khác">Cách khác</option>
+                        </select>
+                        <div class="pt-line">
+                            Khách hàng của bạn:
+                        </div>
+                        <select id="khachhang_dl" class="select_custome">
+                            <option value="Công ty Việt Nam">Công ty Việt Nam</option>
+                            <option value="Công ty nước ngoài">Công ty nước ngoài</option>
+                            <option value="Cá nhân">Cá nhân</option>
+                        </select>
+                        <div class="pt-line">
+                            Bạn biết chúng tôi nhờ:
+                        </div>
+                        <select id="bietnho_dl" class="select_custome">
+                            <option value="Email quảng cáo">Email quảng cáo</option>
+                            <option value="Tiếp thị">Tiếp thị</option>
+                            <option value="Truyền hình">Truyền hình</option>
+                            <option value="Internet">Internet</option>
+                        </select>
+                        <div style="line-height: 20px; margin-top: 20px;">
+                            <div>
+                                <span class="cb_check check" id="isusers" style="height: 18px;"></span>&nbsp;&nbsp;&nbsp;Bạn
+                                là thành viên của Vienauto.com
+                            </div>
+                            <div>
+                                <span class="cb_check" id="creatorders" style="height: 18px;"></span>&nbsp;&nbsp;&nbsp;Đề
+                                nghị cung cấp một đơn hàng trước khi đăng ký.
+                            </div>
+                        </div>
+                        <div align="center" class="pt-line" style="margin-top: 15px;">
+                            <div id="bt_dangky_daily_click" style="width: 100px; line-height: 20px;" class="u7wu8732hu">
+                                Đăng ký đại lý
+                            </div>
+                        </div>
+                    </div>
+                    <div id="show-message-after-register">
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

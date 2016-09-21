@@ -48,8 +48,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application\AgencyService.cs" />
     <Compile Include="Application\OthersService.cs" />
+    <Compile Include="Dto\AgencyDto.cs" />
+    <Compile Include="Dto\DealerShipDto.cs" />
+    <Compile Include="Dto\LocationDto.cs" />
     <Compile Include="Dto\QuestionDto.cs" />
+    <Compile Include="Dto\RegisterDto.cs" />
     <Compile Include="Dto\UserDto.cs" />
     <Compile Include="Result\ErrorName.cs" />
     <Compile Include="Result\Error.cs" />

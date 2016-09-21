@@ -54,6 +54,7 @@
     <Compile Include="Entities\AgencyTime.cs" />
     <Compile Include="Entities\Avatar.cs" />
     <Compile Include="Entities\CarReview.cs" />
+    <Compile Include="Entities\DealerShip.cs" />
     <Compile Include="Entities\ModelAvatar.cs" />
     <Compile Include="Entities\Car.cs" />
     <Compile Include="Entities\CarInfoReview.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Maps\CarExteriorMap.cs" />
     <Compile Include="Maps\CarInteriorMap.cs" />
     <Compile Include="Maps\CarReviewMap.cs" />
+    <Compile Include="Maps\DealerShipMap.cs" />
     <Compile Include="Maps\LevelMap.cs" />
     <Compile Include="Maps\LocationMap.cs" />
     <Compile Include="Maps\ManufacturerMap.cs" />

@@ -51,5 +51,32 @@ namespace Vienauto.Service.Application
             }
             return result;
         }
+
+        public ServiceResult<int> SignUpUser(RegisterDto registerDto)
+        {
+            var result = new ServiceResult<int>();
+            try
+            {
+                using (var session = Session)
+                {
+                    var user = new User();
+                    user.UserName = registerDto.UserName;
+                    user.PassWord = registerDto.PassWord;
+                    user.Question = Get<Question>(registerDto.QuestionId);
+                    user.Answer_Question = registerDto.AnswerQuestion;
+                    user.FullName = registerDto.FullName;
+                    user.Phone = registerDto.Phone;
+                    user.Mobile = registerDto.Mobile;
+                    user.NgayGiaNhap = DateTime.Now;
+                    user.Level = Get<Level>(registerDto.LevelId = 5);
+                    user.Active = registerDto.Active = 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                result.AddError(ErrorCode.RegisterFail, ex);
+            }
+            return result;
+        }
     }
 }
