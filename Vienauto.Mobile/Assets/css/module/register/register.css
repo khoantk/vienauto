@@ -1,0 +1,138 @@
+﻿.noscroll {
+    overflow: hidden !important;
+}
+
+#zoomScroll {
+    position: fixed;
+    margin: 0 auto;
+    z-index: 9999;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    background-color: rgba(255,255,255,0.93);
+    -webkit-perspective: 1000;
+    overflow: auto;
+}
+
+    #zoomScroll .fixtomid {
+        margin: 0 auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    #zoomScroll .zoom {
+        background: #fff;
+        box-shadow: 0 3px 8px rgba(34, 25, 25, 0.4);
+        min-height: 600px;
+    }
+
+        #zoomScroll .zoom .header {
+            background-color: #F2F0F0;
+            border-bottom: 1px solid #CCCACA;
+            padding: 15px 5px 5px 20px;
+        }
+
+            #zoomScroll .zoom .header h2 {
+                display: inline-block;
+                margin: 0;
+                padding: 0;
+            }
+
+.fl {
+    float: left;
+}
+
+#zoomScroll .zoom .header h2 {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
+
+#zoomScroll .zoom .header .close span {
+    display: block;
+    cursor: pointer;
+    height: 32px;
+    width: 32px;
+    background: url(images/Close.png) -10px -12px no-repeat;
+}
+
+.cl {
+    clear: left;
+}
+
+
+.disabledbutton {
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+#selectOption {
+    text-align: center;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+.loader {
+    margin: auto;
+    top: 35.8%;
+    left: 60px;
+    position: absolute;
+}
+
+#selectOption {
+    text-align: center;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+input {
+    border: solid 1px #ccc;
+}
+
+ul#tabs {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+    ul#tabs li {
+        display: inline-block;
+        background-color: #32c896;
+        border-bottom: solid 5px #238b68;
+        padding: 5px 20px;
+        margin-bottom: 4px;
+        color: #fff;
+        cursor: pointer;
+    }
+
+        ul#tabs li:hover {
+            background-color: #238b68;
+        }
+
+        ul#tabs li.active {
+            background-color: #238b68;
+        }
+
+ul#tab {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+    ul#tab li.tab {
+        display: none;
+        border: solid 20px #d2f4e9;
+    }
+
+    ul#tab li.active {
+        display: block !important;
+    }
+
+    ul#tab li.tab h2 {
+        font-weight: 400;
+        margin-bottom: 30px;
+        padding-bottom: 5px;
+        border-bottom: solid 5px #32c896;
+    }

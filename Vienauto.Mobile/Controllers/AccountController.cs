@@ -1,13 +1,11 @@
-﻿using System;
-using System.Web.Mvc;
-using Vienauto.Service.Dto;
+﻿using System.Web.Mvc;
 using Vienauto.Core.Extension;
 using VienautoMobile.Models.Form;
 using VienautoMobile.Models.View;
 using System.Collections.Generic;
 using Vienauto.Service.Application;
 using Vienauto.Core.Extension.Html;
-using System.Collections.Specialized;
+using VienautoMobile.Configuration;
 
 namespace VienautoMobile.Controllers
 {
@@ -64,12 +62,12 @@ namespace VienautoMobile.Controllers
             var locations = LoadLocations();
             registerViewModel.Locations = locations.ToSelectList(l => l.LocationName, l => l.LocationId.ToString(), "Chọn vị trí");
 
-            registerViewModel.TotalBranches = LoadTotalBranches();
-            registerViewModel.NumberCarTransactions = LoadNumberCarTransactions();
-            registerViewModel.CarDistributions = LoadCarDistributions();
-            registerViewModel.IntroduceCustomer = LoadIntroduceCustomer();
-            registerViewModel.YourCustomer = LoadYourCustomer();
-            registerViewModel.HowToKnowUs = LoadHowToKnowUs();
+            registerViewModel.TotalBranches = ConfigSection.GetDropDownList("TotalBranches", "Account");
+            registerViewModel.NumberCarTransactions = ConfigSection.GetDropDownList("NumberCarTransactions", "Account");
+            registerViewModel.CarDistributions = ConfigSection.GetDropDownList("CarDistributions", "Account");
+            registerViewModel.IntroduceCustomer = ConfigSection.GetDropDownList("IntroduceCustomer", "Account");
+            registerViewModel.YourCustomer = ConfigSection.GetDropDownList("YourCustomer", "Account");
+            registerViewModel.HowToKnowUs = ConfigSection.GetDropDownList("HowToKnowUs", "Account");
 
             return View(registerViewModel);
         }
@@ -95,76 +93,6 @@ namespace VienautoMobile.Controllers
             if (Url.IsLocalUrl(returnUrl))
                 return Redirect(returnUrl);
             return RedirectToAction("Index", "Home");
-        }
-
-        private List<SelectListItem> LoadTotalBranches()
-        {
-            return LoadDefaultSelectList(new NameValueCollection
-            {
-                { "2", "2" },
-                { "3", "3" },
-                { "4", "4" },
-                { "5", "5" },
-                { "6", "6" },
-                { "7", "7" },
-                { "8", "8" },
-                { ">8", "9" }
-            });
-        }
-
-        private List<SelectListItem> LoadNumberCarTransactions()
-        {
-            return LoadDefaultSelectList(new NameValueCollection
-            {
-                { "<5", "nhỏ hơn 5 chiếc" },
-                { "10", "10 chiếc" },
-                { "15", "15 chiếc" },
-                { "20", "20 chiếc" },
-                { "25", "25 chiếc" },
-                { "30", "30 chiếc" },
-                { ">30", "lớn hơn 30 chiếc" }
-            });
-        }
-
-        private List<SelectListItem> LoadCarDistributions()
-        {
-            return LoadDefaultSelectList(new NameValueCollection
-            {
-                { "Trong nước", "Trong nước" },
-                { "Nhập khẩu", "Nhập khẩu" },
-                { "Trong nước và nhập khẩu", "Trong nước và nhập khẩu" }
-            });
-        }
-
-        private List<SelectListItem> LoadIntroduceCustomer()
-        {
-            return LoadDefaultSelectList(new NameValueCollection
-            {
-                { "Trong nước", "Trong nước" },
-                { "Nhập khẩu", "Nhập khẩu" },
-                { "Trong nước và nhập khẩu", "Trong nước và nhập khẩu" }
-            });
-        }
-
-        private List<SelectListItem> LoadYourCustomer()
-        {
-            return LoadDefaultSelectList(new NameValueCollection
-            {
-                { "Tiếp thị quảng cáo", "Tiếp thị quảng cáo" },
-                { "Người quen biết", "Người quen biết" },
-                { "Cách khác", "Cách khác" }
-            });
-        }
-
-        private List<SelectListItem> LoadHowToKnowUs()
-        {
-            return LoadDefaultSelectList(new NameValueCollection
-            {
-                { "Email quảng cáo", "Email quảng cáo" },
-                { "Tiếp thị", "Tiếp thị" },
-                { "Truyền hình", "Truyền hình" },
-                { "Internet", "Internet" }
-            });
         }
 
         private List<QuestionViewModel> LoadQuestions()
