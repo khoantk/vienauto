@@ -1,4 +1,4 @@
-﻿@model VienautoMobile.Models.Form.AccountFormModel
+﻿@model VienautoMobile.Models.Form.RegisterFormModel
 @{
     Layout = null;
 }
@@ -120,7 +120,10 @@
                         <div>
                             Chọn hãng phân phối:
                         </div>
-                        <span id="fill_hangphanphoi_dl" runat="server"></span>
+                        <select id="manufacturer_dl" class="select_custome">
+                            <option value="0">Chọn hãng phân phối</option>
+                        </select>
+                        @*@Html.DropDownListFor(x => x.User)*@
                         <div class="pt-line">
                             Chọn đại lý:
                         </div>

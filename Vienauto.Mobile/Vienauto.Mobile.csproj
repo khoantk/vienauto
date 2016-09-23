@@ -222,6 +222,7 @@
   <ItemGroup>
     <Content Include="Assets\css\module\login\login.css" />
     <Content Include="Assets\css\module\register\register.css" />
+    <Content Include="Assets\image\grey-disclosure-arrow-up-down.png" />
     <Content Include="Assets\js\core\13_ajax.js" />
     <Content Include="Assets\js\core\14_core.js" />
     <Content Include="Assets\js\core\12_form.js" />

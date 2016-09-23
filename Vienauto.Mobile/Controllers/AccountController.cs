@@ -72,6 +72,12 @@ namespace VienautoMobile.Controllers
             return View(registerViewModel);
         }
 
+        [HttpPost]
+        public ActionResult Register(RegisterFormModel registerModel)
+        {
+            return View();
+        }
+
         public ActionResult GetAgencyDealerShip(int dealerShipId)
         {
             var agency = _agencyService.GetAgencyByDealerShip(dealerShipId);
