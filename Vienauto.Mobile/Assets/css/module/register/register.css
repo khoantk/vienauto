@@ -76,7 +76,6 @@
     clear: left;
 }
 
-
 .disabledbutton {
     pointer-events: none;
     opacity: 0.4;
@@ -150,3 +149,62 @@ ul#tab {
         padding-bottom: 5px;
         border-bottom: solid 5px #32c896;
     }
+
+input[type="text"], input[type="password"], textarea, select {
+    outline: none;
+}
+
+.pt-line {
+    padding-top: 10px;
+}
+
+.input-register {
+    padding: 3px;
+}
+
+.input-register.hoten {
+    width: 180px;
+}
+
+.input-register.ten {
+    width: 120px;
+}
+
+.input-register.email {
+    width: 310px;
+}
+
+.register_error {
+    font-weight: bold;
+    color: #dd4b39;
+}
+
+.chose-many-items {
+    background: url(images/grey-disclosure-arrow-up-down.png) right no-repeat;
+    border: solid 1px #ccc;
+}
+.input-quest {
+    width: 310px;
+    padding: 3px;
+    cursor: pointer;
+}
+
+a:link, a:visited {
+    color: #068ACD;
+    text-decoration: none;
+}
+
+.u7wu8732hu {
+    border-radius: 3px;
+    padding: 5px;
+    background: #0069b6;
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+    box-shadow: 0 0 5px #ccc;
+    cursor: pointer;
+}
+
