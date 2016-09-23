@@ -10,7 +10,7 @@ namespace Vienauto.Service.Application
     public interface IAccountService
     {
         ServiceResult<UserDto> AuthenticateUser(string userName, string passWord);
-        //ServiceResult<int> SignUpUser(RegisterDto registerDto);
+        ServiceResult<int> SignUpUser(RegisterDto registerDto);
     }
     
     public class AccountService : BaseService, IAccountService
@@ -53,9 +53,10 @@ namespace Vienauto.Service.Application
             return result;
         }
 
-        //public ServiceResult<int> SignUpUser(RegisterDto registerDto)
-        //{
+        public ServiceResult<int> SignUpUser(RegisterDto registerDto)
+        {
 
-        //}
+            return new ServiceResult<int>();
+        }
     }
 }

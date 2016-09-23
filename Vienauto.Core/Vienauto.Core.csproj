@@ -126,6 +126,7 @@
     <Compile Include="Dependency\WindsorControllerFactory.cs" />
     <Compile Include="Dependency\WindsorHybridScopeAccessor.cs" />
     <Compile Include="Extension\Configuration\ConfigExtensions.cs" />
+    <Compile Include="Extension\Configuration\ConfigSectionDDLExtension.cs" />
     <Compile Include="Extension\Encode\EncodingExtensions.cs" />
     <Compile Include="Extension\Type\DateTimeExtensions.cs" />
     <Compile Include="Extension\Type\DictionaryExtensions.cs" />

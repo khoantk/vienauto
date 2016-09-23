@@ -201,6 +201,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebInstaller.cs" />
+    <Compile Include="Configuration\ConfigSection.cs" />
     <Compile Include="Filters\Authentication\UserAuthenticatedAttribute.cs" />
     <Compile Include="Filters\Exception\LogErrorExceptionAttribute.cs" />
     <Compile Include="Models\Form\AccountFormModel.cs" />
