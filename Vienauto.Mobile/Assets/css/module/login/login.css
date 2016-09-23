@@ -31,7 +31,7 @@ body.ui-mobile-viewport, div.ui-mobile-viewport {
     width: 100%;
     min-height: 100%;
     position: absolute;
-    display: none;
+    display: block;
     border: 0;
 }
 

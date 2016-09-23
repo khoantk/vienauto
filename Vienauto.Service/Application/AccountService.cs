@@ -10,6 +10,7 @@ namespace Vienauto.Service.Application
     public interface IAccountService
     {
         ServiceResult<UserDto> AuthenticateUser(string userName, string passWord);
+        ServiceResult<int> SignUpUser(RegisterDto registerDto);
     }
     
     public class AccountService : BaseService, IAccountService
@@ -28,7 +29,7 @@ namespace Vienauto.Service.Application
                 using (var session = Session)
                 {
                     var user = session.QueryOver<User>()
-                                      .Where(u => u.UserName == userName && u.PassWord == passWord && u.Active == 1)
+                                      .Where(u => u.UserName == userName && u.PassWord == encodedMd5Password && u.Active == 1)
                                       .SingleOrDefault();
                     if (user == null)
                         return new ServiceResult<UserDto>
@@ -52,9 +53,10 @@ namespace Vienauto.Service.Application
             return result;
         }
 
-        //public ServiceResult<int> SignUpUser(RegisterDto registerDto)
-        //{
-            
-        //}
+        public ServiceResult<int> SignUpUser(RegisterDto registerDto)
+        {
+
+            return new ServiceResult<int>();
+        }
     }
 }

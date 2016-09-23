@@ -23,8 +23,8 @@
             <input id="radMember" type="radio" name="form" />&nbsp;Dành cho thành viên
         </div>
         <ul id="tabs">
-            <li class="member active">Thông tin thành viên</li>
-            <li class="agent">Thông tin hãng & đại lý</li>
+            <li id="liMember" class="member active">Thông tin thành viên</li>
+            <li id="liAgent" class="agent">Thông tin hãng & đại lý</li>
         </ul>
         <ul id="tab">
             <li id="memberForm" class="tab active">
@@ -44,7 +44,7 @@
                             <strong>Địa chỉ email</strong>
                         </div>
                         <div>
-                            <input type="text" placeholder="@" class="input-register email" id="input-email-toregister" />
+                            <input type="text" placeholder="Địa chỉ email" class="input-register email" id="input-email-toregister" />
                         </div>
                         <div id="error_email" class="register_error">
                         </div>
@@ -69,7 +69,7 @@
                         </div>
                         <div>
                             <div lang="0" class="chose-many-items input-quest" id="input-quest-toregister">
-                                Chọn một câu hỏi và trả lời
+                                Chọn một câu hỏi và trả lời                                
                             </div>
                         </div>
                         <div id="error_question" class="register_error">
@@ -105,7 +105,7 @@
                         <div id="error_agree" class="register_error">
                         </div>
                         <div class="pt-line" align="center">
-                            <div class="u7wu8732hu" style="width: 80px;" id="bt_actionregister_click">
+                            <div class="u7wu8732hu" style="width: 120px;" id="bt_actionregister_click">
                                 Đăng ký
                             </div>
                         </div>
@@ -170,7 +170,7 @@
                             Email:
                         </div>
                         <div>
-                            <input type="text" id="email_dl" class="input-register email" placeholder="@" readonly="readonly" />
+                            <input type="text" id="email_dl" class="input-register email" placeholder="Email đại lý" readonly="readonly" />
                         </div>
                         <div class="pt-line">
                             Vị trí:
@@ -255,7 +255,7 @@
                             </div>
                         </div>
                         <div align="center" class="pt-line" style="margin-top: 15px;">
-                            <div id="bt_dangky_daily_click" style="width: 100px; line-height: 20px;" class="u7wu8732hu">
+                            <div id="bt_dangky_daily_click" style="width: 180px; line-height: 20px;" class="u7wu8732hu">
                                 Đăng ký đại lý
                             </div>
                         </div>

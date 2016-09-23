@@ -1,5 +1,5 @@
 ﻿using System.Web;
-using Vendare.Error;
+//using Vendare.Error;
 using System.Web.Mvc;
 using System.Collections.Specialized;
 
@@ -27,7 +27,7 @@ namespace VienautoMobile.Filters.Exception
             detail.Add("Action", actionName);
             detail.Add("Controller", actionName);
             detail.Add("Exeption", exception?.InnerException?.Message);
-            new LoggableException(exception, detail);
+            //new LoggableException(exception, detail);
         }
     }
 }

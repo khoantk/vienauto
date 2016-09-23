@@ -21,7 +21,7 @@ namespace Vienauto.Core.Dependency
         public WindsorControllerFactory(IWindsorContainer container, IActionInvoker actionInvoker)
         {
             _container = container;
-            _actionInvoker = actionInvoker;
+            _actionInvoker = actionInvoker; 
         }
 
         public override void ReleaseController(IController controller)
@@ -29,12 +29,12 @@ namespace Vienauto.Core.Dependency
             _container.Release(controller);
         }
 
-        protected override IController GetControllerInstance(RequestContext requestContext, Type controllerType)
-        {
-            var controller = (Controller)_container.Resolve(controllerType);
-            if (controller == null && _actionInvoker != null)
-                controller.ActionInvoker = _actionInvoker;
-            return controller;
-        }
+        //protected override IController GetControllerInstance(RequestContext requestContext, Type controllerType)
+        //{
+        //    var controller = (Controller)_container.Resolve(controllerType);
+        //    if (controller == null && _actionInvoker != null)
+        //        controller.ActionInvoker = _actionInvoker;
+        //    return controller;
+        //}
     }
 }

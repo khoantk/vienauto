@@ -4,8 +4,8 @@ using System.Collections.Generic;
 namespace VienautoMobile.Models.Form
 {
     public class RegisterFormModel
-    {
-        public List<SelectListItem> Questions { get; set; }
+    {        
+        public List<SelectListItem> Questions { get; set; }        
         public List<SelectListItem> DealerShips { get; set; }
         public List<SelectListItem> Locations { get; set; }
         public List<SelectListItem> TotalBranches { get; set; }
@@ -16,3 +16,4 @@ namespace VienautoMobile.Models.Form
         public List<SelectListItem> HowToKnowUs { get; set; }
     }
 }
+
