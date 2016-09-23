@@ -182,6 +182,34 @@ var Ajax = function () {
                     }
                 });
             });
+        },
+
+        postOnChange: function ($elem, $postDataCallback) {
+            $elem.on("change", function (event) {
+                event.preventDefault();
+                var $select = $(this);
+
+                var postData = null;
+                if (typeof $postDataCallback != 'undefined')
+                    postData = $postDataCallback();
+
+                return $.ajax({
+                    url: $select.data("href"),
+                    data: postData,
+                    type: 'post',
+                    beforeSend: function () {
+                        App.blockUI();
+                    },
+                    success: function (response) {
+                        App.unblockUI();
+                        return _ajaxSuccess(response, $elem);
+                    },
+                    error: function (response) {
+                        App.unblockUI();
+                        return _ajaxError;
+                    }
+                });
+            });
         }
     }
 }();

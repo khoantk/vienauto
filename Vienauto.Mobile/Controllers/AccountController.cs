@@ -80,10 +80,10 @@ namespace VienautoMobile.Controllers
 
         public ActionResult GetAgencyDealerShip(int dealerShipId)
         {
-            var agency = _agencyService.GetAgencyByDealerShip(dealerShipId);
-            if (agency.HasErrors)
+            var agents = _agencyService.GetAgencyByDealerShip(dealerShipId);
+            if (agents.HasErrors)
                 return JsonError("Lỗi hiển thị đại lý. Liên hệ admin.", false);
-            return JsonSuccess("Hiển thị đại lý thành công.");
+            return JsonSuccess("Hiển thị đại lý thành công.", agents.Target);
         }
 
         [HttpPost]

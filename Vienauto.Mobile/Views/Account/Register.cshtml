@@ -35,8 +35,8 @@
                             <strong>Họ tên của bạn</strong>
                         </div>
                         <div>
-                            <input type="text" id="input-hoten-toregister" placeholder="Họ và chữ lót" class="input-register hoten" />
-                            <input type="text" id="input-ten-toregister" placeholder="Tên" class="input-register ten" />
+                            @Html.TextBoxFor(x => x.FirstName, new { @placeholder = "Họ và chữ lót", @class= "input-register hoten" })
+                            @Html.TextBoxFor(x => x.LastName, new { @placeholder = "Tên", @class = "input-register ten" })
                         </div>
                         <div id="error_hoten" class="register_error">
                         </div>
@@ -44,7 +44,7 @@
                             <strong>Địa chỉ email</strong>
                         </div>
                         <div>
-                            <input type="text" placeholder="Địa chỉ email" class="input-register email" id="input-email-toregister" />
+                            @Html.TextBoxFor(x => x.Email, new { @placeholder = "Địa chỉ email", @class = "input-register email" })
                         </div>
                         <div id="error_email" class="register_error">
                         </div>
@@ -52,7 +52,7 @@
                             <strong>Tạo mật khẩu</strong>
                         </div>
                         <div>
-                            <input type="password" class="input-register email" id="input-pass-toregister" />
+                            @Html.PasswordFor(x => x.Password, new { @class = "input-register email" })
                         </div>
                         <div id="error_password" class="register_error">
                         </div>
@@ -60,7 +60,7 @@
                             <strong>Xác nhận mật khẩu của bạn</strong>
                         </div>
                         <div>
-                            <input type="password" class="input-register email" id="repasss-toverify" />
+                            @Html.PasswordFor(x => x.ConfirmPassword, new { @class = "input-register email" })
                         </div>
                         <div id="error_repass" class="register_error">
                         </div>
@@ -78,7 +78,7 @@
                             <strong>Câu trả lời của riêng bạn</strong>
                         </div>
                         <div>
-                            <input type="text" class="input-register email" id="input-answer-toregister" />
+                            @Html.TextBoxFor(x => x.Answer, new { @class = "input-register email" })
                         </div>
                         <div id="error_answer" class="register_error">
                         </div>
@@ -86,13 +86,15 @@
                             <strong>Điện thoại bàn</strong>
                         </div>
                         <div>
-                            <input type="text" class="input-register email" id="input-phone-toregister" value="+84" />
+                            @*<input type="text" class="input-register email" id="input-phone-toregister" value="+84" />*@
+                            @Html.TextBoxFor(x => x.HomePhone, new { @class = "input-register email" })
                         </div>
                         <div class="pt-line">
                             <strong>Di động</strong>
                         </div>
                         <div>
-                            <input type="text" class="input-register email" id="input-mobi-to-register" value="+84" />
+                            @*<input type="text" class="input-register email" id="input-mobi-to-register" value="+84" />*@
+                            @Html.TextBoxFor(x => x.Mobile, new { @class = "input-register email" })
                         </div>
                         <div style="margin-top: 20px; line-height: 18px;">
                             <input type="checkbox" id="agree-with-scttos" />Tôi đồng ý với <a href="javascript:;"
@@ -120,14 +122,14 @@
                         <div>
                             Chọn hãng phân phối:
                         </div>
-                        <select id="manufacturer_dl" class="select_custome">
+                        <select id="ddlDealerShip" class="select_custome" data-href="/account/getagencydealership/">
                             <option value="0">Chọn hãng phân phối</option>
                         </select>
                         @*@Html.DropDownListFor(x => x.User)*@
                         <div class="pt-line">
                             Chọn đại lý:
                         </div>
-                        <select id="dailycha_dll"></select>
+                        <select id="ddlAgents"></select>
                         <div class="pt-line">
                             <strong>Tên công ty: </strong>
                         </div>
