@@ -21,20 +21,23 @@ namespace VienautoRemake
             //bundles.Add(new ScriptBundle("~/bundles/js/modernizr").Include( 
             //            "~/Assets/js/core/modernizr-*"));
 
-            var coreJsVirtualPaths = BundleConfigHelper.GetVirtualPaths(BundConfigType.Js, "bunleCoreDirectory");
-            bundles.Add(new ScriptBundle(ConfigExtensions<string>.GetValue("bunleJsCorePath")).Include(coreJsVirtualPaths));
+            var coreJs = BundleConfigHelper.GetVirtualPaths(BundConfigType.Js, "bunleCoreDirectory");
+            bundles.Add(new ScriptBundle(ConfigExtensions<string>.GetValue("bunleJsCorePath")).Include(coreJs));
 
-            var loginJsVirtualPaths = BundleConfigHelper.GetVirtualPaths(BundConfigType.Js, "bunleLoginDirectory");
-            bundles.Add(new ScriptBundle(ConfigExtensions<string>.GetValue("bunleJsLoginPath")).Include(loginJsVirtualPaths));
+            var coreCss = BundleConfigHelper.GetVirtualPaths(BundConfigType.Css, "bunleCoreDirectory");
+            bundles.Add(new ScriptBundle(ConfigExtensions<string>.GetValue("bunleCssCorePath")).Include(coreCss));
 
-            var loginCssVirtualPaths = BundleConfigHelper.GetVirtualPaths(BundConfigType.Css, "bunleLoginDirectory");
-            bundles.Add(new StyleBundle(ConfigExtensions<string>.GetValue("bunleCssLoginPath")).Include(loginCssVirtualPaths));
+            var loginJs = BundleConfigHelper.GetVirtualPaths(BundConfigType.Js, "bunleLoginDirectory");
+            bundles.Add(new ScriptBundle(ConfigExtensions<string>.GetValue("bunleJsLoginPath")).Include(loginJs));
 
-            var registerJsVirtualPaths = BundleConfigHelper.GetVirtualPaths(BundConfigType.Js, "bunleRegisterDirectory");
-            bundles.Add(new ScriptBundle(ConfigExtensions<string>.GetValue("bunleJsRegisterPath")).Include(registerJsVirtualPaths));
+            var loginCss = BundleConfigHelper.GetVirtualPaths(BundConfigType.Css, "bunleLoginDirectory");
+            bundles.Add(new StyleBundle(ConfigExtensions<string>.GetValue("bunleCssLoginPath")).Include(loginCss));
 
-            var registerCssVirtualPaths = BundleConfigHelper.GetVirtualPaths(BundConfigType.Css, "bunleRegisterDirectory");
-            bundles.Add(new StyleBundle(ConfigExtensions<string>.GetValue("bunleCssRegisterPath")).Include(registerCssVirtualPaths));
+            var registerJs = BundleConfigHelper.GetVirtualPaths(BundConfigType.Js, "bunleRegisterDirectory");
+            bundles.Add(new ScriptBundle(ConfigExtensions<string>.GetValue("bunleJsRegisterPath")).Include(registerJs));
+
+            var registerCss = BundleConfigHelper.GetVirtualPaths(BundConfigType.Css, "bunleRegisterDirectory");
+            bundles.Add(new StyleBundle(ConfigExtensions<string>.GetValue("bunleCssRegisterPath")).Include(registerCss));
         }
     }
 }

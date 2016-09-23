@@ -52,15 +52,5 @@ namespace VienautoMobile.Controllers
         {
             base.LogOut();
         }
-
-        protected List<SelectListItem> LoadDefaultSelectList(NameValueCollection selectItems)
-        {
-            var selectList = new List<SelectListItem>();
-            foreach (string key in selectItems.AllKeys)
-            {
-                selectList.Add(new SelectListItem { Text = key, Value = selectItems[key] });
-            }
-            return selectList;
-        }
     }
 }

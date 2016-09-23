@@ -13,8 +13,8 @@ namespace Vienauto.Core.Mvc.Helper
 
     public class BundleConfigHelper
     {
-        private const string defaultJsFilePath = "/Assets/js/";
-        private const string defaultCssFilePath = "/Assets/css/";
+        private const string defaultJsFilePath = "/Assets/js";
+        private const string defaultCssFilePath = "/Assets/css";
 
         public static string[] GetVirtualPaths(BundConfigType type, string folderName)
         {
