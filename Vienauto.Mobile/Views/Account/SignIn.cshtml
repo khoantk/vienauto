@@ -4,12 +4,15 @@
 }
 
 <!-- Css -->
+@Styles.Render("~/bundles/css/core")
 @Styles.Render("~/bundles/css/login")
+@Styles.Render("~/bundles/css/register")
 <!-- Js -->
-@Scripts.Render("~/bundles/js/jquery")
-@Scripts.Render("~/bundles/js/jqueryval")
+@Scripts.Render("~/bundles/js/core")
+@*@Scripts.Render("~/bundles/js/jqueryval")*@
 @Scripts.Render("~/bundles/js/login")
-
+@Scripts.Render("~/bundles/js/register")
+ 
 <!DOCTYPE html>
 <html class="ui-mobile">
 <head>
@@ -151,7 +154,7 @@
                     <li class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-last ui-btn-up-a">
                         <div class="ui-btn-inner ui-li">
                             <div class="ui-btn-text">
-                                <a id="signUpLink" href="https://m.cars.com/profile/#!signup?continue=http%3A%2F%2Fm.cars.com%2F%23search" class="ui-link-inherit">New to Cars.com? Sign up now.</a>
+                                <a id="signUpLink" href="/Account/Register" class="ui-link-inherit">New to Cars.com? Sign up now.</a>
                             </div>
                             <span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span>
                         </div>

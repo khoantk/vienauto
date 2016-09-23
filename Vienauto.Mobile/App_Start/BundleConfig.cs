@@ -21,7 +21,7 @@ namespace VienautoRemake
             //bundles.Add(new ScriptBundle("~/bundles/js/modernizr").Include( 
             //            "~/Assets/js/core/modernizr-*"));
 
-            var coreJs = BundleConfigHelper.GetVirtualPaths(BundConfigType.Js, "bunleCoreDirectory");
+            var coreJs = BundleConfigHelper.GetVirtualPaths(BundConfigType.Js, "bunleCoreDirectory"); 
             bundles.Add(new ScriptBundle(ConfigExtensions<string>.GetValue("bunleJsCorePath")).Include(coreJs));
 
             var coreCss = BundleConfigHelper.GetVirtualPaths(BundConfigType.Css, "bunleCoreDirectory");

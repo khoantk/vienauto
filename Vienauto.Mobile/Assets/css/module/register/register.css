@@ -1,4 +1,18 @@
-﻿.noscroll {
+﻿.u7wu8732hu {
+    border-radius: 3px;
+    padding: 5px;
+    background: #0069b6;
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+    box-shadow: 0 0 5px #ccc;
+    cursor: pointer;
+}
+
+.noscroll {
     overflow: hidden !important;
 }
 

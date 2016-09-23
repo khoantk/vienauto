@@ -219,8 +219,8 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\css\core\login.css" />
     <Content Include="Assets\css\module\login\login.css" />
+    <Content Include="Assets\css\module\register\register.css" />
     <Content Include="Assets\js\core\ajax.js" />
     <Content Include="Assets\js\core\core.js" />
     <Content Include="Assets\js\core\form.js" />
@@ -241,7 +241,9 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
-    <Content Include="nhibernate.config" />
+    <Content Include="nhibernate.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
