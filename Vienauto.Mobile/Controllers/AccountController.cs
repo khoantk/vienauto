@@ -53,11 +53,24 @@ namespace VienautoMobile.Controllers
         public ActionResult Register()
         {
             var registerViewModel = new RegisterFormModel();
+            registerViewModel.QuestionId = 0;
+            registerViewModel.DealerShipId = 0;
+            registerViewModel.AgentId = 0;
+            registerViewModel.LocationId = 0;
+            registerViewModel.TotalBranchId = 2;
+            registerViewModel.NumberCarTransactionId = "nhỏ hơn 5 chiếc";
+            registerViewModel.CarDistributionId = "Trong nước";
+            registerViewModel.IntroduceCustomerId = "Trong nước";
+            registerViewModel.YourCustomerId = "Tiếp thị quảng cáo";
+            registerViewModel.HowToKnowUsId = "Email quảng cáo";
+
             var questions = LoadQuestions();
-            registerViewModel.Questions = questions.ToSelectList(q => q.QuestionName, q => q.QuestionId.ToString(), "Chọn câu hỏi");
+            registerViewModel.Questions = questions.ToSelectList(q => q.QuestionName, q => q.QuestionId.ToString(), "Chọn một câu hỏi và trả lời");
 
             var dealerShips = LoadDealerShips();
             registerViewModel.DealerShips = dealerShips.ToSelectList(ds => ds.ManufacturerName, ds => ds.ManufacturerId.ToString(), "Chọn hãng phân phối");
+
+            registerViewModel.Agents = new List<SelectListItem> { new SelectListItem { Text = "Chọn đại lý", Value = "0" } };
 
             var locations = LoadLocations();
             registerViewModel.Locations = locations.ToSelectList(l => l.LocationName, l => l.LocationId.ToString(), "Chọn vị trí");

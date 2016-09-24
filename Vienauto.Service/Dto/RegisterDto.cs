@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Vienauto.Service.Dto
 {
-    public class RegisterDto
+    public class RegisterDto : AgentUserDto
     {
+        public int UserId { get; set; }
         public string UserName { get; set; }
         public string PassWord { get; set; }
         public int QuestionId { get; set; }
@@ -18,5 +19,26 @@ namespace Vienauto.Service.Dto
         public DateTime JoinDate { get; set; }
         public int LevelId { get; set; }
         public int Active { get; set; }
+    }
+
+    public class AgentUserDto
+    {
+        public string CompanyName { get; set; }
+        public string TransactionAddress { get; set; }
+        public string TaxNumber { get; set; }
+        public string DeputyFullName { get; set; }
+        public string AgentPhone { get; set; }
+        public string AgentMobile { get; set; }
+        public string EmailVerification { get; set; }
+        public string Location { get; set; }
+        public int TotalBranches { get; set; }
+        public string NumberCarTransaction { get; set; }
+        public string CarDistribution { get; set; }
+        public bool NeedConsultMore { get; set; }
+        public string IntroduceCustomer { get; set; }
+        public string YourCustomer { get; set; }
+        public string HowToKnowUs { get; set; }
+        public bool IsUser { get; set; }
+        public bool CreateOrders { get; set; }
     }
 }

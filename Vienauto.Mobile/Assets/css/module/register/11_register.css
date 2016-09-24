@@ -76,11 +76,6 @@
     clear: left;
 }
 
-.disabledbutton {
-    pointer-events: none;
-    opacity: 0.4;
-}
-
 #selectOption {
     text-align: center;
     margin-bottom: 15px;
@@ -139,7 +134,7 @@ ul#tab {
         border: solid 20px #d2f4e9;
     }
 
-    ul#tab li.active {
+    ul#tab li.focus {
         display: block !important;
     }
 
@@ -194,17 +189,4 @@ a:link, a:visited {
     text-decoration: none;
 }
 
-.u7wu8732hu {
-    border-radius: 3px;
-    padding: 5px;
-    background: #0069b6;
-    text-align: center;
-    padding-left: 20px;
-    padding-right: 20px;
-    font-weight: bold;
-    color: #fff;
-    text-transform: uppercase;
-    box-shadow: 0 0 5px #ccc;
-    cursor: pointer;
-}
 

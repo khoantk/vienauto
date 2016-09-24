@@ -24,8 +24,19 @@ namespace VienautoMobile.Models.Form
         public bool IsUser { get; set; }
         public bool CreateOrders { get; set; }
         public bool AgreeWithUs { get; set; }
+        public int QuestionId { get; set; }
+        public int DealerShipId { get; set; }
+        public int AgentId { get; set; }
+        public int LocationId { get; set; }
+        public int TotalBranchId { get; set; }
+        public string NumberCarTransactionId { get; set; }
+        public string CarDistributionId { get; set; }
+        public string IntroduceCustomerId { get; set; }
+        public string YourCustomerId { get; set; }
+        public string HowToKnowUsId { get; set; }
         public List<SelectListItem> Questions { get; set; }        
-        public List<SelectListItem> DealerShips { get; set; }        
+        public List<SelectListItem> DealerShips { get; set; }
+        public List<SelectListItem> Agents { get; set; }
         public List<SelectListItem> Locations { get; set; }
         public List<SelectListItem> TotalBranches { get; set; }
         public List<SelectListItem> NumberCarTransactions { get; set; }

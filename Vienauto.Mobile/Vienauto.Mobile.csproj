@@ -220,6 +220,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\css\core\15_core.css" />
     <Content Include="Assets\css\module\login\11_login.css" />
     <Content Include="Assets\css\module\register\11_register.css" />
     <Content Include="Assets\image\grey-disclosure-arrow-up-down.png" />
