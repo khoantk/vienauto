@@ -62,12 +62,12 @@ namespace VienautoMobile.Controllers
             var locations = LoadLocations();
             registerViewModel.Locations = locations.ToSelectList(l => l.LocationName, l => l.LocationId.ToString(), "Chọn vị trí");
 
-            registerViewModel.TotalBranches = ConfigSection.GetDropDownList("TotalBranches", "Account");
-            registerViewModel.NumberCarTransactions = ConfigSection.GetDropDownList("NumberCarTransactions", "Account");
-            registerViewModel.CarDistributions = ConfigSection.GetDropDownList("CarDistributions", "Account");
-            registerViewModel.IntroduceCustomer = ConfigSection.GetDropDownList("IntroduceCustomer", "Account");
-            registerViewModel.YourCustomer = ConfigSection.GetDropDownList("YourCustomer", "Account");
-            registerViewModel.HowToKnowUs = ConfigSection.GetDropDownList("HowToKnowUs", "Account");
+            //registerViewModel.TotalBranches = ConfigSection.GetDropDownList("TotalBranches", "Account");
+            //registerViewModel.NumberCarTransactions = ConfigSection.GetDropDownList("NumberCarTransactions", "Account");
+            //registerViewModel.CarDistributions = ConfigSection.GetDropDownList("CarDistributions", "Account");
+            //registerViewModel.IntroduceCustomer = ConfigSection.GetDropDownList("IntroduceCustomer", "Account");
+            //registerViewModel.YourCustomer = ConfigSection.GetDropDownList("YourCustomer", "Account");
+            //registerViewModel.HowToKnowUs = ConfigSection.GetDropDownList("HowToKnowUs", "Account");
 
             return View(registerViewModel);
         }

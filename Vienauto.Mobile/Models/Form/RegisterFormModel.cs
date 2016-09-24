@@ -5,6 +5,7 @@ namespace VienautoMobile.Models.Form
 {
     public class RegisterFormModel
     {        
+
         public List<SelectListItem> Questions { get; set; }        
         public List<SelectListItem> DealerShips { get; set; }
         public List<SelectListItem> Locations { get; set; }
