@@ -3,12 +3,15 @@
         window.location = "#dang-ky-thanh-vien";
     });
 
-    //data-href="/account/GetAgencyDealerShip/@item.Id"
-
-    Ajax.post($("#dealerShipDDL"), function () { });
-    $("#dealerShipDDL").on("ajaxSuccess", function (target, response) {
-        if (typeof response.data != 'undefined' && typeof response.data != null) {
-
+    Ajax.postOnChange($("#DealerShips"), function () { return $("#DealerShips").val(); });
+    $("#DealerShips").on("ajaxSuccess", function (target, response) {
+        var result = respond.data;
+        if (typeof result != 'undefined' && typeof result != null) {
+            var ddlInnerHtml = "";
+            $.each(result, function (item) {
+                ddlInnerHtml += "<option value='" + item.AgencyId + "'>" + item.FullName + "</option>";
+            });
+            $("#ddlAgents").html(ddlInnerHtml);
         }
     });
 

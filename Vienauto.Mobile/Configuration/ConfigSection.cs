@@ -7,12 +7,12 @@ namespace VienautoMobile.Configuration
 {
     public class ConfigSection
     {
-        public static List<SelectListItem> GetDropDownList(string dropDownListName, string dropdownListController)
+        public static List<SelectListItem> GetDropDownList(string name, string controller)
         {
             var config = ConfigurationManager.GetSection("DDLConfigSection") as ConfigSectionDDLExtension;
             foreach (ConfigItem element in config.ConfigSet)
             {
-                if (element.Name == dropDownListName && element.Name == dropdownListController)
+                if (element.Name == name && element.Controller == controller)
                     return new List<SelectListItem>
                     {
                         new SelectListItem { Text = element.Text, Value = element.Value }
