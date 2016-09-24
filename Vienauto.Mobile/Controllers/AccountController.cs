@@ -1,11 +1,13 @@
 ﻿using System.Web.Mvc;
+using Vienauto.Service.Dto;
+using Vienauto.Service.Result;
 using Vienauto.Core.Extension;
 using VienautoMobile.Models.Form;
 using VienautoMobile.Models.View;
 using System.Collections.Generic;
 using Vienauto.Service.Application;
 using Vienauto.Core.Extension.Html;
-using VienautoMobile.Configuration;
+using Vienauto.Mobile.Configuration;
 
 namespace VienautoMobile.Controllers
 {
@@ -88,7 +90,23 @@ namespace VienautoMobile.Controllers
         [HttpPost]
         public ActionResult Register(RegisterFormModel registerModel)
         {
-            return View();
+            ValidateForm(registerModel);
+            if (ModelState.IsValid)
+            {
+                var result = new ServiceResult<RegisterDto>();
+                var registerDto = registerModel.FromModelToDto();
+
+                if (registerModel.IsRegsiterAgent)
+                    result = _accountService.SignUpAgentUser(registerDto);
+                else
+                    result = _accountService.SignUpUser(registerDto);
+
+                if (result.HasErrors)
+                    return View(registerModel);
+
+                return RedirectToAction("Index", "Home");
+            }
+            return View(registerModel);
         }
 
         public ActionResult GetAgencyDealerShip(int dealerShipId)
@@ -105,6 +123,11 @@ namespace VienautoMobile.Controllers
         {
             LogOutAction();
             return View();
+        }
+
+        private void ValidateForm(RegisterFormModel model)
+        {
+
         }
 
         private ActionResult RedirectToLocal(string returnUrl)

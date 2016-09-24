@@ -1,10 +1,12 @@
 ﻿using System.Web.Mvc;
+using Vienauto.Service.Dto;
 using System.Collections.Generic;
 
 namespace VienautoMobile.Models.Form
 {
     public class RegisterFormModel
     {
+        public bool IsRegsiterAgent { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
@@ -44,6 +46,33 @@ namespace VienautoMobile.Models.Form
         public List<SelectListItem> IntroduceCustomer { get; set; }
         public List<SelectListItem> YourCustomer { get; set; }
         public List<SelectListItem> HowToKnowUs { get; set; }
+    }
+
+    public static class RegisterFormModelExtension
+    {
+        public static RegisterDto FromModelToDto(this RegisterFormModel model)
+        {
+            return new RegisterDto
+            {
+                CompanyName = model.CompanyName,
+                TransactionAddress = model.TransactionAddress,
+                TaxNumber = model.TaxNumber,
+                DeputyFullName = model.Deputy,
+                Phone = model.HomePhone,
+                Mobile = model.Mobile,
+                EmailVerification = model.Email,
+                Location = model.LocationId.ToString(),
+                TotalBranches = model.TotalBranchId,
+                NumberCarTransaction = model.NumberCarTransactionId,
+                CarDistribution = model.CarDistributionId,
+                NeedConsultMore = model.NeedConsultMore,
+                IntroduceCustomer = model.IntroduceCustomerId,
+                YourCustomer = model.YourCustomerId,
+                HowToKnowUs = model.HowToKnowUsId,
+                IsUser = model.IsUser,
+                CreateOrders = model.CreateOrders
+            };
+        }
     }
 }
 

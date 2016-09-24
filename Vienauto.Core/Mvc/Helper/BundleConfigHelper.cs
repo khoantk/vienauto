@@ -25,13 +25,15 @@ namespace Vienauto.Core.Mvc.Helper
             {
                 var cssDirectory = string.Concat(defaultCssFilePath, folder);
                 var directory = HostingEnvironment.MapPath(cssDirectory);
-                filePaths = new DirectoryInfo(directory).GetFiles("*.css", SearchOption.TopDirectoryOnly).Select(d => d.Name).ToArray();
+                filePaths = new DirectoryInfo(directory).GetFiles("*.css", SearchOption.TopDirectoryOnly)
+                                                        .Select(d => string.Concat(cssDirectory, d.Name)).ToArray();
             }
             else if (type == BundConfigType.Js) 
             {
                 var jsDirectory = string.Concat(defaultJsFilePath, folder);
                 var directory = HostingEnvironment.MapPath(jsDirectory);
-                filePaths = new DirectoryInfo(directory).GetFiles("*.js", SearchOption.TopDirectoryOnly).Select(d => d.Name).ToArray();
+                filePaths = new DirectoryInfo(directory).GetFiles("*.js", SearchOption.TopDirectoryOnly)
+                                                        .Select(d => string.Concat(jsDirectory, d.Name)).ToArray();
             }
             return filePaths;
         }

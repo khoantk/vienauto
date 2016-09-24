@@ -1,4 +1,13 @@
-﻿.u7wu8732hu {
+﻿body {
+    font-family: "Lucida Grande" ,Helvetica,Arial,Verdana,sans-serif !important;
+    font-size: 12px !important;
+    line-height: 1.5em !important;
+    color: #333333 !important;
+    margin: 0px !important;
+    padding: 0px !important;
+}
+
+.u7wu8732hu {
     border-radius: 3px;
     padding: 5px;
     background: #0069b6;
@@ -69,7 +78,7 @@
     cursor: pointer;
     height: 32px;
     width: 32px;
-    background: url(images/Close.png) -10px -12px no-repeat;
+    background: url(/Assets/image/Close.png) -10px -12px no-repeat;
 }
 
 .cl {
@@ -119,7 +128,7 @@ ul#tabs {
             background-color: #238b68;
         }
 
-        ul#tabs li.active {
+        ul#tabs li.focus {
             background-color: #238b68;
         }
 
@@ -128,6 +137,10 @@ ul#tab {
     margin: 0;
     padding: 0;
 }
+
+    ul#tab li {
+        width: 320px;
+    }
 
     ul#tab li.tab {
         display: none;
@@ -175,7 +188,7 @@ input[type="text"], input[type="password"], textarea, select {
 }
 
 .chose-many-items {
-    background: url(images/grey-disclosure-arrow-up-down.png) right no-repeat;
+    background: url(/Assets/images/grey-disclosure-arrow-up-down.png) right no-repeat;
     border: solid 1px #ccc;
 }
 .input-quest {

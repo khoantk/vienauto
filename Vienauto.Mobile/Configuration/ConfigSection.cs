@@ -3,7 +3,7 @@ using System.Configuration;
 using System.Collections.Generic;
 using Vienauto.Core.Extension.Configuration;
 
-namespace VienautoMobile.Configuration
+namespace Vienauto.Mobile.Configuration
 {
     public class ConfigSection
     {
@@ -20,7 +20,7 @@ namespace VienautoMobile.Configuration
                 if (element.Name == name && element.Controller == controller)
                     selectList.Add(new SelectListItem { Text = element.Text, Value = element.Value });
             }
-            return null;
+            return selectList;
         }
     }
 }

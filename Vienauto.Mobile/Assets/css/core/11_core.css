@@ -1,5 +1,5 @@
 ﻿.active {
-    display: block;
+    display: inline-block !important;
 }
 
 .disabled {

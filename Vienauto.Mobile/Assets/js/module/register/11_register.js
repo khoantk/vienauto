@@ -1,21 +1,43 @@
 ﻿$(document).ready(function () {
-    $("#agentForm").addClass("disabled");
     window.location.hash = "#dang-ky-thanh-vien";
 
-    $("#radMember").activeDeactiveTarget($("#liMember"), $("#liAgent"), function () {
-        $(this).activeDeactiveTarget($("#liMember"), $("#liAgent"), function () { }, "focus");
-        if ($("#agentForm").hasClass("disabled"))
-            $("#agentForm").removeClass("disabled");
-        $("#btnUserRegister").show();
-    }, "active");
+    $("#liMember").addClass("focus");
+    $("#btnUserRegister").hide();
+    $("#IsRegsiterAgent").val("True");
 
-    $("#radAgent").activeDeactiveTarget($("#liMember"), null, function () {
-        $(this).activeDeactiveTarget($("#liAgent"), null, function () { }, "active");
-        $(this).activeDeactiveTarget($("#liMember"), $("#liAgent"), function () { }, "focus");
-        if (!$("#agentForm").hasClass("disabled"))
-            $("#agentForm").addClass("disabled");
+    $("#radMember").click(function () {
+        if ($("#liAgent").hasClass("focus"))
+            $("#liAgent").removeClass("focus");
+
+        if ($("#liAgent").hasClass("active"))
+            $("#liAgent").removeClass("active");
+
+        $("#liAgent").hide();
+
+        $("#liMember").addClass("active");
+        $("#liMember").addClass("focus");
+        
+        $("#memberForm").addClass("active");
+        if ($("#agentForm").hasClass("active"))
+            $("#agentForm").removeClass("active");
+        
+        $("#btnUserRegister").show();
+        $("#IsRegsiterAgent").val("False");
+    });
+
+    $("#radAgent").click(function () {
+        $("#liMember").addClass("focus");
+        $("#liAgent").addClass("active");
+        if ($("#liAgent").hasClass("focus"))
+            $("#liAgent").removeClass("focus");
+
+        $("#memberForm").addClass("active");
+        if ($("#agentForm").hasClass("active"))
+            $("#agentForm").removeClass("active");
+
         $("#btnUserRegister").hide();
-    }, "active");
+        $("#IsRegsiterAgent").val("True");
+    });
 
     $("ul#tabs li").click(function (e) {
         if (!$(this).hasClass("focus")) {
@@ -57,7 +79,9 @@
                     equalTo: "#Password"
                 },
                 QuestionId: "required",
-                Answer: "required"
+                Answer: "required",
+                CompanyName: "required",
+                TransactionAddress: "required"
             },
             messages: {
                 FirstName: "Chưa nhập họ và chữ lót của bạn.",
@@ -72,7 +96,9 @@
                     equalTo: "Mật khẩu xác nhận không trùng khớp."
                 },
                 QuestionId: "Chưa chọn câu hỏi bí mật",
-                Answer: "Chưa nhập câu trả lời. Nó rất cần thiết khi khôi phục mật khẩu."
+                Answer: "Chưa nhập câu trả lời. Nó rất cần thiết khi khôi phục mật khẩu.",
+                CompanyName: "Chưa nhập tên công ty.",
+                TransactionAddress: "Chưa nhập địa chỉ giao dịch."
             },
             submitHandler: function (form) {
                 form.submit();
