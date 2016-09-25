@@ -1,11 +1,13 @@
 ﻿using System.Web.Mvc;
+using Vienauto.Service.Dto;
+using Vienauto.Service.Result;
 using Vienauto.Core.Extension;
 using VienautoMobile.Models.Form;
 using VienautoMobile.Models.View;
 using System.Collections.Generic;
 using Vienauto.Service.Application;
 using Vienauto.Core.Extension.Html;
-using VienautoMobile.Configuration;
+using Vienauto.Mobile.Configuration;
 
 namespace VienautoMobile.Controllers
 {
@@ -53,11 +55,24 @@ namespace VienautoMobile.Controllers
         public ActionResult Register()
         {
             var registerViewModel = new RegisterFormModel();
+            registerViewModel.QuestionId = 0;
+            registerViewModel.DealerShipId = 0;
+            registerViewModel.AgentId = 0;
+            registerViewModel.LocationId = 0;
+            registerViewModel.TotalBranchId = 2;
+            registerViewModel.NumberCarTransactionId = "nhỏ hơn 5 chiếc";
+            registerViewModel.CarDistributionId = "Trong nước";
+            registerViewModel.IntroduceCustomerId = "Trong nước";
+            registerViewModel.YourCustomerId = "Tiếp thị quảng cáo";
+            registerViewModel.HowToKnowUsId = "Email quảng cáo";
+
             var questions = LoadQuestions();
-            registerViewModel.Questions = questions.ToSelectList(q => q.QuestionName, q => q.QuestionId.ToString(), "Chọn câu hỏi");
+            registerViewModel.Questions = questions.ToSelectList(q => q.QuestionName, q => q.QuestionId.ToString(), "Chọn một câu hỏi và trả lời");
 
             var dealerShips = LoadDealerShips();
             registerViewModel.DealerShips = dealerShips.ToSelectList(ds => ds.ManufacturerName, ds => ds.ManufacturerId.ToString(), "Chọn hãng phân phối");
+
+            registerViewModel.Agents = new List<SelectListItem> { new SelectListItem { Text = "Chọn đại lý", Value = "0" } };
 
             var locations = LoadLocations();
             registerViewModel.Locations = locations.ToSelectList(l => l.LocationName, l => l.LocationId.ToString(), "Chọn vị trí");
@@ -75,7 +90,23 @@ namespace VienautoMobile.Controllers
         [HttpPost]
         public ActionResult Register(RegisterFormModel registerModel)
         {
-            return View();
+            ValidateForm(registerModel);
+            if (ModelState.IsValid)
+            {
+                var result = new ServiceResult<RegisterDto>();
+                var registerDto = registerModel.FromModelToDto();
+
+                if (registerModel.IsRegsiterAgent)
+                    result = _accountService.SignUpAgentUser(registerDto);
+                else
+                    result = _accountService.SignUpUser(registerDto);
+
+                if (result.HasErrors)
+                    return View(registerModel);
+
+                return RedirectToAction("Index", "Home");
+            }
+            return View(registerModel);
         }
 
         public ActionResult GetAgencyDealerShip(int dealerShipId)
@@ -92,6 +123,11 @@ namespace VienautoMobile.Controllers
         {
             LogOutAction();
             return View();
+        }
+
+        private void ValidateForm(RegisterFormModel model)
+        {
+
         }
 
         private ActionResult RedirectToLocal(string returnUrl)

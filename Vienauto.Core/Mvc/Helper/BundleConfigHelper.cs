@@ -23,15 +23,18 @@ namespace Vienauto.Core.Mvc.Helper
 
             if (type == BundConfigType.Css)
             {
-                var directory = HostingEnvironment.MapPath(string.Concat(defaultCssFilePath, folder));
-                filePaths = new DirectoryInfo(directory).GetFiles("*.css", SearchOption.TopDirectoryOnly).Select(d => string.Concat(defaultCssFilePath, folder) + "/" + d.Name).ToArray();
+                var cssDirectory = string.Concat(defaultCssFilePath, folder);
+                var directory = HostingEnvironment.MapPath(cssDirectory);
+                filePaths = new DirectoryInfo(directory).GetFiles("*.css", SearchOption.TopDirectoryOnly)
+                                                        .Select(d => string.Concat(cssDirectory, d.Name)).ToArray();
             }
             else if (type == BundConfigType.Js) 
             {
-                var directory = HostingEnvironment.MapPath(string.Concat(defaultJsFilePath, folder));
-                filePaths = new DirectoryInfo(directory).GetFiles("*.js", SearchOption.TopDirectoryOnly).Select(d => string.Concat(defaultJsFilePath, folder) + "/" + d.Name).ToArray();
+                var jsDirectory = string.Concat(defaultJsFilePath, folder);
+                var directory = HostingEnvironment.MapPath(jsDirectory);
+                filePaths = new DirectoryInfo(directory).GetFiles("*.js", SearchOption.TopDirectoryOnly)
+                                                        .Select(d => string.Concat(jsDirectory, d.Name)).ToArray();
             }
-
             return filePaths;
         }
     }
