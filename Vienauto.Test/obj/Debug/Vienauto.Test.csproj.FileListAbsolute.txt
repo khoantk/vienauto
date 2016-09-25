@@ -1,0 +1,6 @@
+D:\MyJobs\Web\vienauto\Vienauto.Test\bin\Debug\Vienauto.Test.dll
+D:\MyJobs\Web\vienauto\Vienauto.Test\bin\Debug\Vienauto.Test.pdb
+D:\MyJobs\Web\vienauto\Vienauto.Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\MyJobs\Web\vienauto\Vienauto.Test\obj\Debug\Vienauto.Test.csprojResolveAssemblyReference.cache
+D:\MyJobs\Web\vienauto\Vienauto.Test\obj\Debug\Vienauto.Test.dll
+D:\MyJobs\Web\vienauto\Vienauto.Test\obj\Debug\Vienauto.Test.pdb
