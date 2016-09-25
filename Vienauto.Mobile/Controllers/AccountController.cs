@@ -77,12 +77,12 @@ namespace VienautoMobile.Controllers
             var locations = LoadLocations();
             registerViewModel.Locations = locations.ToSelectList(l => l.LocationName, l => l.LocationId.ToString(), "Chọn vị trí");
 
-            //registerViewModel.TotalBranches = ConfigSection.GetDropDownList("TotalBranches", "Account");
-            //registerViewModel.NumberCarTransactions = ConfigSection.GetDropDownList("NumberCarTransactions", "Account");
-            //registerViewModel.CarDistributions = ConfigSection.GetDropDownList("CarDistributions", "Account");
-            //registerViewModel.IntroduceCustomer = ConfigSection.GetDropDownList("IntroduceCustomer", "Account");
-            //registerViewModel.YourCustomer = ConfigSection.GetDropDownList("YourCustomer", "Account");
-            //registerViewModel.HowToKnowUs = ConfigSection.GetDropDownList("HowToKnowUs", "Account");
+            registerViewModel.TotalBranches = ConfigSection.GetDropDownList("TotalBranches", "Account");
+            registerViewModel.NumberCarTransactions = ConfigSection.GetDropDownList("NumberCarTransactions", "Account");
+            registerViewModel.CarDistributions = ConfigSection.GetDropDownList("CarDistributions", "Account");
+            registerViewModel.IntroduceCustomer = ConfigSection.GetDropDownList("IntroduceCustomer", "Account");
+            registerViewModel.YourCustomer = ConfigSection.GetDropDownList("YourCustomer", "Account");
+            registerViewModel.HowToKnowUs = ConfigSection.GetDropDownList("HowToKnowUs", "Account");
 
             return View(registerViewModel);
         }
@@ -127,7 +127,26 @@ namespace VienautoMobile.Controllers
 
         private void ValidateForm(RegisterFormModel model)
         {
-
+            if (string.IsNullOrEmpty(model.FirstName))
+                ModelState.AddModelError("FirstName", "Chưa nhập họ và chữ lót.");
+            if (string.IsNullOrEmpty(model.LastName))
+                ModelState.AddModelError("PassWord", "Chưa nhập tên.");
+            if (string.IsNullOrEmpty(model.Email))
+                ModelState.AddModelError("Email", "Chưa nhập email.");
+            if (string.IsNullOrEmpty(model.Password))
+                ModelState.AddModelError("PassWord", "Chưa nhập mật khẩu.");
+            if (string.IsNullOrEmpty(model.ConfirmPassword))
+                ModelState.AddModelError("ConfirmPassword", "Chưa xác nhận mật khẩu.");            
+            if (string.Equals(model.ConfirmPassword, model.Password))
+                ModelState.AddModelError("IsEquals", "Mật khẩu không khớp.");
+            if (int.Equals(model.QuestionId, 0))
+                ModelState.AddModelError("QuestionId", "Chưa chọn câu hỏi bí mật.");
+            if (model.IsRegsiterAgent) { 
+                if (string.IsNullOrEmpty(model.CompanyName))
+                    ModelState.AddModelError("CompanyName", "Chưa nhập tên công ty.");
+                if (string.IsNullOrEmpty(model.TransactionAddress))
+                    ModelState.AddModelError("TransactionAddress", "Chưa nhập địa chỉ giao dịch.");
+            }
         }
 
         private ActionResult RedirectToLocal(string returnUrl)

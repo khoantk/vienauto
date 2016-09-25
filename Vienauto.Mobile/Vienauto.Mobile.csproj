@@ -261,7 +261,6 @@
     <Content Include="Assets\css\core\bootstrap.css.map" />
     <None Include="Properties\PublishProfiles\vienautomobile.pubxml" />
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
-    <Content Include="Assets\js\core\15_bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.1.0.min.js" />
     <Content Include="Scripts\jquery-3.1.0.slim.min.js" />

@@ -57,6 +57,30 @@ namespace Vienauto.Service.Application
         public ServiceResult<RegisterDto> SignUpUser(RegisterDto registerDto)
         {
             var result = new ServiceResult<RegisterDto>();
+            try
+            {
+                using (var session = Session)
+                {
+                    var newUser = new User
+                    {
+                        UserName = registerDto.UserName,
+                        PassWord = registerDto.PassWord,
+                        FullName = registerDto.FullName,
+                        Phone = registerDto.Phone,
+                        Mobile = registerDto.Mobile,
+                        Active = registerDto.Active,
+                        NgayGiaNhap = registerDto.JoinDate,
+                        Level = Get<Level>(registerDto.LevelId),
+                        Question = Get<Question>(registerDto.QuestionId)
+                    };
+                    registerDto.UserId = Create(newUser);
+                    CommitChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                result.AddError(ErrorCode.RegisterAgentUserFail, ex);
+            }
             return result;
         }
 
