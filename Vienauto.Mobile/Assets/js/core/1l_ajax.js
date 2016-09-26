@@ -158,7 +158,7 @@ var Ajax = function () {
         post: function ($elem, $postDataCallback) {
             $elem.on("click", function (event) {
                 event.preventDefault();
-                var $button = $(this);
+                var $button = $(this); 
 
                 var postData = null;
                 if (typeof $postDataCallback != 'undefined')

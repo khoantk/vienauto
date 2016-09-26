@@ -122,6 +122,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Caching\CacheProvider.cs" />
+    <Compile Include="Data\Caching\CacheProviderExtend.cs" />
     <Compile Include="Dependency\WindsorActionInvoker.cs" />
     <Compile Include="Dependency\WindsorControllerFactory.cs" />
     <Compile Include="Dependency\WindsorHybridScopeAccessor.cs" />
@@ -156,7 +158,12 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Library\vdcore\vdCore.csproj">
+      <Project>{064B166D-3F8E-4A52-BEB7-CEEE1674F663}</Project>
+      <Name>vdCore</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

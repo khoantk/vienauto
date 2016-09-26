@@ -2,6 +2,8 @@
 using System.Linq;
 using System.Web.Hosting;
 using Vienauto.Core.Extension;
+using System.Text.RegularExpressions;
+using Vendare.Utils;
 
 namespace Vienauto.Core.Mvc.Helper
 {
@@ -25,13 +27,16 @@ namespace Vienauto.Core.Mvc.Helper
             {
                 var cssDirectory = string.Concat(defaultCssFilePath, folder);
                 var directory = HostingEnvironment.MapPath(cssDirectory);
-                filePaths = new DirectoryInfo(directory).GetFiles("*.css", SearchOption.TopDirectoryOnly)
+                LogWriter.Write(LogLevel.Info, directory);
+                filePaths = new DirectoryInfo(directory).EnumerateFiles("*.*", SearchOption.TopDirectoryOnly)
+                                                        .Where(d => d.Name.EndsWith(".css") || d.Name.EndsWith(".map"))
                                                         .Select(d => string.Concat(cssDirectory, d.Name)).ToArray();
             }
             else if (type == BundConfigType.Js) 
             {
                 var jsDirectory = string.Concat(defaultJsFilePath, folder);
                 var directory = HostingEnvironment.MapPath(jsDirectory);
+                LogWriter.Write(LogLevel.Info, directory);
                 filePaths = new DirectoryInfo(directory).GetFiles("*.js", SearchOption.TopDirectoryOnly)
                                                         .Select(d => string.Concat(jsDirectory, d.Name)).ToArray();
             }

@@ -47,6 +47,8 @@
         background: #fff;
         box-shadow: 0 3px 8px rgba(34, 25, 25, 0.4);
         min-height: 600px;
+        padding-left: 5%;
+        padding-right: 5%;
     }
 
         #zoomScroll .zoom .header {
@@ -63,6 +65,14 @@
 
 .fl {
     float: left;
+}
+
+rl {
+    float: right;
+}
+
+div.close {
+    padding-right: 10px;
 }
 
 #zoomScroll .zoom .header h2 {
@@ -137,7 +147,7 @@ ul#tab {
 }
 
     ul#tab li {
-        width: 320px;
+        width: 100%;
     }
 
     ul#tab li.tab {
@@ -168,7 +178,7 @@ input[type="text"], input[type="password"], textarea, select {
     padding: 3px;
 }
 
-.input-register.hoten {
+/*.input-register.hoten {
     width: 180px;
 }
 
@@ -178,7 +188,7 @@ input[type="text"], input[type="password"], textarea, select {
 
 .input-register.email {
     width: 310px;
-}
+}*/
 
 .register_error {
     font-weight: bold;

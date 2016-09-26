@@ -11,7 +11,7 @@ namespace VienautoMobile.Models.Form
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public string ConfirmPassword { get; set; }
+        public string ConfirmPassword { get; set; }               
         public string Answer { get; set; }
         public string HomePhone { get; set; }
         public string Mobile { get; set; }

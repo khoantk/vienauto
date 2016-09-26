@@ -13,6 +13,9 @@ namespace VienautoRemake
             var coreCss = BundleConfigHelper.GetVirtualPaths(BundConfigType.Css, "bunleCoreDirectory");
             bundles.Add(new StyleBundle(AppSetting.BundleCssCorePath).Include(coreCss));
 
+            var boostrapCss = BundleConfigHelper.GetVirtualPaths(BundConfigType.Css, "bunleBootstrapDirectory");
+            bundles.Add(new StyleBundle(AppSetting.BundleCssBootstrapPath).Include(boostrapCss));
+
             var loginCss = BundleConfigHelper.GetVirtualPaths(BundConfigType.Css, "bunleLoginDirectory");
             bundles.Add(new StyleBundle(AppSetting.BundleCssLoginPath).Include(loginCss));
 
@@ -28,6 +31,8 @@ namespace VienautoRemake
 
             var registerJs = BundleConfigHelper.GetVirtualPaths(BundConfigType.Js, "bunleRegisterDirectory");
             bundles.Add(new ScriptBundle(AppSetting.BundleJsRegisterPath).Include(registerJs));
+
+            BundleTable.EnableOptimizations = true;
         }
     }
 }

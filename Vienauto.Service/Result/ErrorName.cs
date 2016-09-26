@@ -5,6 +5,7 @@
         None = 0,
         Exception = 1,
         LogInFail,
+        DuplicateUser,
         RegisterUserFail,
         RegisterAgentUserFail,
         FailToListAll,

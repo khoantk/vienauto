@@ -1,10 +1,12 @@
-﻿@using Vienauto.Mobile.Configuration
+﻿@using Vienauto.Service.Result
+@using Vienauto.Mobile.Configuration
 @model VienautoMobile.Models.Form.RegisterFormModel
 @{
     Layout = null;
 }
 
 <!-- Css -->
+@Styles.Render(AppSetting.BundleCssBootstrapPath)
 @Styles.Render(AppSetting.BundleCssCorePath)
 @Styles.Render(AppSetting.BundleCssRegisterPath)
 <!-- Js -->
@@ -20,13 +22,10 @@
 <body class="noscroll">
     <div id="zoomScroll">
         <div class="fixtomid">
-            <div class="zoom" style="width: 380px;">
+            <div class="zoom">
                 <div class="header">
                     <div class="fl" style="width:290px">
                         <h2>Đăng ký thành viên</h2>
-                    </div>
-                    <div class="fl close">
-                        <span></span>
                     </div>
                     <div class="cl"></div>
                 </div>
@@ -36,13 +35,23 @@
                             <input id="radAgent" type="radio" name="form" checked />&nbsp;Dành cho hãng và đại lý
                             <input id="radMember" type="radio" name="form" />&nbsp;Dành cho thành viên
                         </div>
-                        @using (Html.BeginForm("register", "account", FormMethod.Post, new { id = "frmRegister" }))
+                        <ul id="tabs">
+                            <li id="liMember" class="tabMember active">Thông tin thành viên</li>
+                            <li id="liAgent" class="tabAgent">Thông tin hãng & đại lý</li>
+                        </ul>
+                        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { id = "frmRegister" }))
                         {
+                            @Html.ValidationSummary()
+                            var errors = ViewBag.ErrorMessage;
+                            if (errors != null)
+                            {
+                                var errorCodes = (List<Error>)errors;
+                                foreach (var error in errorCodes)
+                                {
+                                    <p style="color: red;">@error.Code.ToString()</p>
+                                }
+                            }
                             @Html.HiddenFor(x => x.IsRegsiterAgent)
-                            <ul id="tabs">
-                                <li id="liMember" class="tabMember active">Thông tin thành viên</li>
-                                <li id="liAgent" class="tabAgent">Thông tin hãng & đại lý</li>
-                            </ul>
                             <ul id="tab">
                                 <li id="memberForm" class="tab active">
                                     <div style="padding: 5px; line-height: 25px;">
@@ -51,67 +60,64 @@
                                                 <strong>Họ và chữ lót của bạn</strong>
                                             </div>
                                             <div>
-                                                @Html.TextBoxFor(x => x.FirstName, new { @placeholder = "Họ và chữ lót", @class = "input-register hoten" })
+                                                @Html.TextBoxFor(x => x.FirstName, new { @placeholder = "Họ và chữ lót", @class = "input-register hoten form-control" })
                                             </div>
                                             <div class="pt-line"></div>
                                             <div>
                                                 <strong>Tên của bạn</strong>
                                             </div>
                                             <div>
-                                                @Html.TextBoxFor(x => x.LastName, new { @placeholder = "Tên", @class = "input-register ten" })
+                                                @Html.TextBoxFor(x => x.LastName, new { @placeholder = "Tên", @class = "input-register ten form-control" })
                                             </div>
                                             <div class="pt-line">
                                                 <strong>Địa chỉ email</strong>
                                             </div>
                                             <div>
-                                                @Html.TextBoxFor(x => x.Email, new { @placeholder = "Địa chỉ email", @class = "input-register email" })
+                                                @Html.TextBoxFor(x => x.Email, new { @placeholder = "Địa chỉ email", @class = "input-register email form-control" })
                                             </div>
                                             <div class="pt-line">
                                                 <strong>Tạo mật khẩu</strong>
                                             </div>
                                             <div>
-                                                @Html.PasswordFor(x => x.Password, new { @class = "input-register email" })
+                                                @Html.PasswordFor(x => x.Password, new { @class = "input-register email form-control" })
                                             </div>
                                             <div class="pt-line">
                                                 <strong>Xác nhận mật khẩu của bạn</strong>
                                             </div>
                                             <div>
-                                                @Html.PasswordFor(x => x.ConfirmPassword, new { @class = "input-register email" })
+                                                @Html.PasswordFor(x => x.ConfirmPassword, new { @class = "input-register email form-control" })
                                             </div>
                                             <div class="pt-line">
                                                 <strong>Câu hỏi bí mật</strong>
                                             </div>
-                                            @Html.DropDownListFor(x => x.QuestionId, Model.Questions)
+                                            @Html.DropDownListFor(x => x.QuestionId, Model.Questions, new { @class = "form-control" })
                                             <div class="pt-line">
                                                 <strong>Câu trả lời của riêng bạn</strong>
                                             </div>
                                             <div>
-                                                @Html.TextBoxFor(x => x.Answer, new { @class = "input-register email" })
+                                                @Html.TextBoxFor(x => x.Answer, new { @class = "input-register email form-control" })
                                             </div>
                                             <div class="pt-line">
                                                 <strong>Điện thoại bàn</strong>
                                             </div>
                                             <div>
-                                                @Html.TextBoxFor(x => x.HomePhone, new { @class = "input-register email" })
+                                                @Html.TextBoxFor(x => x.HomePhone, new { @class = "input-register email form-control" })
                                             </div>
                                             <div class="pt-line">
                                                 <strong>Di động</strong>
                                             </div>
                                             <div>
-                                                @Html.TextBoxFor(x => x.Mobile, new { @class = "input-register email" })
+                                                @Html.TextBoxFor(x => x.Mobile, new { @class = "input-register email form-control" })
                                             </div>
                                             <div style="margin-top: 20px; line-height: 18px;">
                                                 @Html.CheckBoxFor(x => x.AgreeWithUs) Tôi đồng ý với <a href="javascript:;"
                                                                                                         onclick="window_location_newhash('#dieu-khoan-thanh-vien')">điều khoản thành viên</a>
                                                 và <a href="javascript:;" onclick="window_location_newhash('#chinh-sach-bao-mat')">
-                                                    Chính
-                                                    sách bảo mật
+                                                    Chính sách bảo mật
                                                 </a> được ban hành bởi hệ thống <b>Vienauto.com</b>
                                             </div>
                                             <div class="pt-line" align="center">
-                                                <div id="btnUserRegister" class="u7wu8732hu" style="width: 120px;">
-                                                    Đăng ký
-                                                </div>
+                                                <button type="submit" class="btn btn-primary" id="btnUserRegister">Đăng ký thành viên</button>
                                             </div>
                                         </div>
                                     </div>
@@ -120,105 +126,103 @@
                                     <div style="padding: 5px; line-height: 25px;">
                                         <div id="show-register-agent" style="position: relative;">
                                             <div>
-                                                Chọn hãng phân phối:
+                                                <strong>Chọn hãng phân phối:</strong>
                                             </div>
-                                            @Html.DropDownListFor(x => x.DealerShipId, Model.DealerShips, new { @class = "select_custome", data_href = "/account/getagencydealership/" })
+                                            @Html.DropDownListFor(x => x.DealerShipId, Model.DealerShips, new { @class = "select_custome form-control", data_href = "/account/getagencydealership/" })
                                             <div class="pt-line">
                                                 Chọn đại lý:
                                             </div>
-                                            @Html.DropDownListFor(x => x.AgentId, Model.Agents)
+                                            @Html.DropDownListFor(x => x.AgentId, Model.Agents, new { @class = "form-control" })
                                             <div class="pt-line">
                                                 <strong>Tên công ty: </strong>
                                             </div>
                                             <div>
-                                                @Html.TextBoxFor(x => x.CompanyName, new { @class = "input-register email" })
+                                                @Html.TextBoxFor(x => x.CompanyName, new { @class = "input-register email form-control" })
                                             </div>
                                             <div class="pt-line">
                                                 <strong>Địa chỉ giao dịch: </strong>
                                             </div>
                                             <div>
-                                                @Html.TextBoxFor(x => x.TransactionAddress, new { @class = "input-register email" })
+                                                @Html.TextBoxFor(x => x.TransactionAddress, new { @class = "input-register email form-control" })
                                             </div>
                                             <div class="pt-line">
                                                 <strong>Mã số thuế: </strong>
                                             </div>
                                             <div>
-                                                @Html.TextBoxFor(x => x.TaxNumber, new { @class = "input-register email", style = "width: 150px;" })
+                                                @Html.TextBoxFor(x => x.TaxNumber, new { @class = "input-register email form-control", style = "width: 150px;" })
                                             </div>
                                             <div class="pt-line">
                                                 <strong>Người đại diện: </strong>
                                             </div>
                                             <div>
-                                                @Html.TextBoxFor(x => x.Deputy, new { @class = "input-register email" })
+                                                @Html.TextBoxFor(x => x.Deputy, new { @class = "input-register email form-control" })
                                             </div>
                                             <div class="pt-line">
-                                                Điện thoại:
+                                                <strong>Điện thoại:</strong>
                                             </div>
                                             <div>
-                                                @Html.TextBoxFor(x => x.AgentPhone, new { @class = "input-register email", @readonly = "readonly", style = "width: 150px;" })
+                                                @Html.TextBoxFor(x => x.AgentPhone, new { @class = "input-register email form-control", @readonly = "readonly", style = "width: 150px;" })
                                             </div>
                                             <div class="pt-line">
-                                                Di động:
+                                                <strong>Di động:</strong>
                                             </div>
                                             <div>
-                                                @Html.TextBoxFor(x => x.AgentMobile, new { @class = "input-register email", @readonly = "readonly", style = "width: 150px;" })
+                                                @Html.TextBoxFor(x => x.AgentMobile, new { @class = "input-register email form-control", @readonly = "readonly", style = "width: 150px;" })
                                             </div>
                                             <div class="pt-line">
-                                                Email:
+                                                <strong>Email:</strong>
                                             </div>
                                             <div>
-                                                @Html.TextBoxFor(x => x.AgentEmail, new { @class = "input-register email", @readonly = "readonly", style = "width: 150px;" })
+                                                @Html.TextBoxFor(x => x.AgentEmail, new { @class = "input-register email form-control", @readonly = "readonly", style = "width: 150px;" })
                                             </div>
                                             <div class="pt-line">
-                                                Vị trí:
+                                                <strong>Vị trí:</strong>
                                             </div>
-                                            @Html.DropDownListFor(x => x.LocationId, Model.Locations, new { @class = "select_custome" })
+                                            @Html.DropDownListFor(x => x.LocationId, Model.Locations, new { @class = "select_custome form-control" })
                                             <div class="pt-line">
-                                                Tổng chi nhánh:
+                                                <strong>Tổng chi nhánh:</strong>
                                             </div>
-                                            @Html.DropDownListFor(x => x.TotalBranchId, Model.TotalBranches, new { @class = "select_custome" })
+                                            @Html.DropDownListFor(x => x.TotalBranchId, Model.TotalBranches, new { @class = "select_custome form-control" })
                                             <div class="pt-line">
-                                                Số xe giao dịch:
+                                                <strong>Số xe giao dịch:</strong>
                                             </div>
-                                            @Html.DropDownListFor(x => x.NumberCarTransactionId, Model.NumberCarTransactions, new { @class = "select_custome" })
+                                            @Html.DropDownListFor(x => x.NumberCarTransactionId, Model.NumberCarTransactions, new { @class = "select_custome form-control" })
                                             &nbsp;&nbsp;&nbsp;Chiếc/tháng
                                             <div class="pt-line">
-                                                Xe phân phối:
+                                                <strong>Xe phân phối:</strong>
                                             </div>
-                                            @Html.DropDownListFor(x => x.CarDistributionId, Model.CarDistributions, new { @class = "select_custome" })
+                                            @Html.DropDownListFor(x => x.CarDistributionId, Model.CarDistributions, new { @class = "select_custome form-control" })
                                             <div class="pt-line">
-                                                Bạn cần tư vấn thêm:
+                                                <strong>Bạn cần tư vấn thêm:</strong>
                                             </div>
                                             <div>
                                                 @Html.RadioButtonFor(x => x.NeedConsultMore, "Có")
                                                 @Html.RadioButtonFor(x => x.NeedConsultMore, "Không")
                                             </div>
                                             <div class="pt-line">
-                                                Bạn có khách hàng nhờ:
+                                                <strong>Bạn có khách hàng nhờ:</strong>
                                             </div>
-                                            @Html.DropDownListFor(x => x.IntroduceCustomerId, Model.IntroduceCustomer, new { @class = "select_custome" })
+                                            @Html.DropDownListFor(x => x.IntroduceCustomerId, Model.IntroduceCustomer, new { @class = "select_custome form-control" })
                                             <div class="pt-line">
-                                                Khách hàng của bạn:
+                                                <strong>Khách hàng của bạn:</strong>
                                             </div>
-                                            @Html.DropDownListFor(x => x.YourCustomerId, Model.YourCustomer, new { @class = "select_custome" })
+                                            @Html.DropDownListFor(x => x.YourCustomerId, Model.YourCustomer, new { @class = "select_custome form-control" })
                                             <div class="pt-line">
-                                                Bạn biết chúng tôi nhờ:
+                                                <strong>Bạn biết chúng tôi nhờ:</strong>
                                             </div>
-                                            @Html.DropDownListFor(x => x.HowToKnowUsId, Model.HowToKnowUs, new { @class = "select_custome" })
+                                            @Html.DropDownListFor(x => x.HowToKnowUsId, Model.HowToKnowUs, new { @class = "select_custome form-control" })
                                             <div style="line-height: 20px; margin-top: 20px;">
                                                 <div>
-                                                    @Html.CheckBoxFor(x => x.IsUser, new { @class = "cb_check check", style = "height: 18px;" }) &nbsp;&nbsp;&nbsp;Bạn
+                                                    @Html.CheckBoxFor(x => x.IsUser, new { @class = "cb_check check form-control", style = "height: 18px;" }) &nbsp;&nbsp;&nbsp;Bạn
                                                     là thành viên của Vienauto.com
                                                 </div>
                                                 <div>
-                                                    @Html.CheckBoxFor(x => x.CreateOrders, new { @class = "cb_check", style = "height: 18px;" }) &nbsp;&nbsp;&nbsp;Đề
+                                                    @Html.CheckBoxFor(x => x.CreateOrders, new { @class = "cb_check form-control", style = "height: 18px;" }) &nbsp;&nbsp;&nbsp;Đề
                                                     nghị cung cấp một đơn hàng trước khi đăng ký.
                                                 </div>
                                             </div>
                                             <div align="center" class="pt-line" style="margin-top: 15px;">
-                                                <div id="btnAgentRegister" style="width: 180px; line-height: 20px;" class="u7wu8732hu">
-                                                    Đăng ký đại lý
-                                                </div>
+                                                <button type="submit" class="btn btn-primary" id="btnUserAgentRegister">Đăng ký đại lý</button>
                                             </div>
                                         </div>
                                     </div>
@@ -232,4 +236,3 @@
     </div>
 </body>
 </html>
-
