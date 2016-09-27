@@ -30,7 +30,7 @@ namespace Vienauto.Mobile.Configuration
             };
 
             var cacheKey = string.Join("-", new string[] { name, controller });
-            var dataCached = cacheProvider.Fetch(cacheKey, dataFromConfig, null, TimeSpan.FromHours(4));
+            var dataCached = cacheProvider.Fetch(cacheKey, dataFromConfig, null, TimeSpan.FromHours(8));
             return dataCached;
         }
     }

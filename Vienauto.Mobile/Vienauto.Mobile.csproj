@@ -231,7 +231,6 @@
     <Content Include="Assets\js\core\1l_ajax.js" />
     <Content Include="Assets\js\core\1e_bootstrap.js" />
     <Content Include="Assets\js\core\1o_core.js" />
-    <Content Include="Assets\js\core\1m_form.js" />
     <Content Include="Assets\js\core\1a_jquery-3.1.0.js" />
     <Content Include="Assets\js\core\1b_jquery-3.1.0.slim.js" />
     <Content Include="Assets\js\core\1j_jquery.blockUI.js" />

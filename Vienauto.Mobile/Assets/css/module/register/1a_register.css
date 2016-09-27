@@ -198,4 +198,9 @@ a:link, a:visited {
     text-decoration: none;
 }
 
-
+@media screen and (max-width: 320px) and (min-width: 320px) {
+    ul li a {
+        padding-left: 30px;
+        background: url(email-icon.png) left center no-repeat;
+    }
+}

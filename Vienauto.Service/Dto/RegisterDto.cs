@@ -18,6 +18,10 @@ namespace Vienauto.Service.Dto
         public string Mobile { get; set; }
         public DateTime JoinDate { get; set; }
         public int LevelId { get; set; }
+        public int ProvinceId { get; set; }
+        public int ChangeSub { get; set; }
+        public float Discount { get; set; }
+        public string Avatar { get; set; }
         public int Active { get; set; }
     }
 

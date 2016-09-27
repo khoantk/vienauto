@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using Vienauto.Service.Dto;
 using System.Collections.Generic;
+using System;
 
 namespace VienautoMobile.Models.Form
 {
@@ -54,12 +55,26 @@ namespace VienautoMobile.Models.Form
         {
             return new RegisterDto
             {
+                //User
+                Active = 1, //default is active
+                LevelId = 5, //default is member
+                Avatar = "",
+                Discount = 0,
+                ChangeSub = 0,
+                ProvinceId = 1, //default is TP.HCM
+                Mobile = model.Mobile,
+                UserName = model.Email,
+                JoinDate = DateTime.Now,
+                Phone = model.HomePhone,
+                PassWord = model.Password,
+                QuestionId = model.QuestionId,
+                AnswerQuestion = model.Answer,
+                FullName = string.Join(" ", new string[] { model.FirstName, model.LastName }),
+                //Agent
                 CompanyName = model.CompanyName,
                 TransactionAddress = model.TransactionAddress,
                 TaxNumber = model.TaxNumber,
                 DeputyFullName = model.Deputy,
-                Phone = model.HomePhone,
-                Mobile = model.Mobile,
                 EmailVerification = model.Email,
                 Location = model.LocationId.ToString(),
                 TotalBranches = model.TotalBranchId,
@@ -70,7 +85,7 @@ namespace VienautoMobile.Models.Form
                 YourCustomer = model.YourCustomerId,
                 HowToKnowUs = model.HowToKnowUsId,
                 IsUser = model.IsUser,
-                CreateOrders = model.CreateOrders
+                CreateOrders = model.CreateOrders,
             };
         }
     }
