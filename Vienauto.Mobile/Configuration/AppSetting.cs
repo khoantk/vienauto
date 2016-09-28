@@ -12,6 +12,8 @@ namespace Vienauto.Mobile.Configuration
         public static string BundleCssBootstrapPath => ConfigExtensions<string>.GetValue("bunleCssBootstrapPath");
         public static string BundleCssLoginPath => ConfigExtensions<string>.GetValue("bunleCssLoginPath");
         public static string BundleCssRegisterPath => ConfigExtensions<string>.GetValue("bunleCssRegisterPath");
+        public static string BundleJsJqueryPath => ConfigExtensions<string>.GetValue("bunleJsJqueryPath");
+        public static string BundleJsJqueryValidatePath => ConfigExtensions<string>.GetValue("bunleJsJqueryValidatePath");
         public static string BundleJsCorePath => ConfigExtensions<string>.GetValue("bunleJsCorePath");
         public static string BundleJsLoginPath => ConfigExtensions<string>.GetValue("bunleJsLoginPath");
         public static string BundleJsRegisterPath => ConfigExtensions<string>.GetValue("bunleJsRegisterPath");

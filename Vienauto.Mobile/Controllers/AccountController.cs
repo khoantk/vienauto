@@ -52,6 +52,18 @@ namespace VienautoMobile.Controllers
             return View(model);
         }
 
+        public bool LogIn(AccountFormModel model)
+        {
+            ValidateFormModel(model);
+            //var errors = ModelState.Values.SelectMany(value => value.Errors).ToList();
+            if (ModelState.IsValid)
+            {
+                var isLoginSuccessful = LoginAction(() => _accountService.AuthenticateUser(model.UserName, model.PassWord), new string[] { "FullName", "UserName" });
+                return isLoginSuccessful;
+            }
+            return false;
+        }
+
         public ActionResult Register()
         {
             var registerModel = new RegisterFormModel();
@@ -90,7 +102,16 @@ namespace VienautoMobile.Controllers
                     LoadDropdownListRegisterModel(registerModel);
                     return View(registerModel);
                 }
-
+                var newAccount = new AccountFormModel();
+                newAccount.UserName = registerDto.UserName;
+                newAccount.PassWord = registerDto.PassWord;
+                bool success = LogIn(newAccount);
+                if(!success)
+                {
+                    ViewBag.ErrorMessage = "Đăng nhập thất bại";
+                    LoadDropdownListRegisterModel(registerModel);
+                    return View(registerModel);
+                }
                 return RedirectToAction("Index", "Home");
             }
             LoadDropdownListRegisterModel(registerModel);

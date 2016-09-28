@@ -27,6 +27,8 @@ namespace Vienauto.Service.Application
             try
             {
                 var encodedMd5Password = EncodingExtensions.EncodeMD5(passWord);
+                if (!Session.IsOpen)
+                    Session = OpenDefaultSession();
                 using (var session = Session)
                 {
                     var user = session.QueryOver<User>()
@@ -67,7 +69,7 @@ namespace Vienauto.Service.Application
 
                     var user = new User();
                     user.UserName = registerDto.UserName;
-                    user.PassWord = registerDto.PassWord;
+                    user.PassWord = EncodingExtensions.EncodeMD5(registerDto.PassWord);
                     user.FullName = registerDto.FullName;
                     user.Phone = registerDto.Phone;
                     user.Mobile = registerDto.Mobile;
@@ -82,7 +84,7 @@ namespace Vienauto.Service.Application
                     user.Level = Get<Level>(registerDto.LevelId);
                     user.Question = Get<Question>(registerDto.QuestionId);
                     registerDto.UserId = Create(user);
-                    CommitChanges();
+                    CommitChanges();                    
                 }
             }
             catch (Exception ex)
@@ -105,7 +107,7 @@ namespace Vienauto.Service.Application
 
                     var user = new User();
                     user.UserName = registerDto.UserName;
-                    user.PassWord = registerDto.PassWord;
+                    user.PassWord = EncodingExtensions.EncodeMD5(registerDto.PassWord);
                     user.FullName = registerDto.FullName;
                     user.Phone = registerDto.Phone;
                     user.Mobile = registerDto.Mobile;

@@ -198,14 +198,14 @@ var Ajax = function () {
                     data: postData,
                     type: 'post',
                     beforeSend: function () {
-                        App.blockUI();
+                        //App.blockUI();
                     },
                     success: function (response) {
-                        App.unblockUI();
+                        //App.unblockUI();
                         return _ajaxSuccess(response, $elem);
                     },
                     error: function (response) {
-                        App.unblockUI();
+                        //App.unblockUI();
                         return _ajaxError;
                     }
                 });

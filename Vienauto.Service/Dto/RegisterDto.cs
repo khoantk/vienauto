@@ -22,15 +22,7 @@ namespace Vienauto.Service.Dto
         public int ChangeSub { get; set; }
         public float Discount { get; set; }
         public string Avatar { get; set; }
-        public int Active { get; set; }
-        //
-        public string Avatar { get; set; }
-        public int Point { get; set; }
-        public int Parent { get; set; }
-        public float Discount { get; set; }        
-        public string ZoomMap { get; set; }
-        public string MapCoordinate { get; set; }
-        public int changesub { get; set; }
+        public int Active { get; set; }       
     }
 
     public class AgentUserDto

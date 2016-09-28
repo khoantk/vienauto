@@ -231,13 +231,13 @@
     <Content Include="Assets\js\core\1l_ajax.js" />
     <Content Include="Assets\js\core\1e_bootstrap.js" />
     <Content Include="Assets\js\core\1o_core.js" />
-    <Content Include="Assets\js\core\1a_jquery-3.1.0.js" />
+    <Content Include="Assets\js\jquery\1a_jquery-3.1.0.js" />
     <Content Include="Assets\js\core\1b_jquery-3.1.0.slim.js" />
     <Content Include="Assets\js\core\1j_jquery.blockUI.js" />
     <Content Include="Assets\js\core\1e_jquery.form.js" />
     <Content Include="Assets\js\core\1n_jquery.tmpl.js" />
-    <Content Include="Assets\js\core\1c_jquery.validate.js" />
-    <Content Include="Assets\js\core\1d_jquery.validate.unobtrusive.js" />
+    <Content Include="Assets\js\jqueryValidate\1c_jquery.validate.js" />
+    <Content Include="Assets\js\jqueryValidate\1d_jquery.validate.unobtrusive.js" />
     <Content Include="Assets\js\core\1g_moment.js" />
     <Content Include="Assets\js\core\1f_respond.js" />
     <Content Include="Assets\js\core\1k_scripts.js" />
@@ -290,7 +290,9 @@
     <Content Include="Views\Account\SignIn.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="user.config" />
+    <Content Include="user.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

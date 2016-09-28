@@ -58,9 +58,16 @@ namespace Vienauto.Service.Application
                 AgencyDto dto = null;
                 User userAlias = null;
                 DealerShip dealerShipAlias = null;
-
+                //raise error Session is closed
+                //check Session state
+                if (!Session.IsOpen)
+                    Session = OpenDefaultSession();
                 using (var session = Session)
                 {
+                    //has exception
+                    //Invalid column name 'Id_Users'.
+                    //table hdt.Hang_Phanphoi does not exists Id_Users.Instead of Id_Hang_PhanPhoi
+                    //SqlString: SELECT useralias1_.Id_Users as y0_, useralias1_.FullName as y1_ FROM hdt.Hang_Phanphoi this_ inner join hdt.Users useralias1_ on this_.Id_Users=useralias1_.Id_Users WHERE this_.Id_Manufacturer = @p0 GROUP BY useralias1_.Id_Users, useralias1_.FullName
                     var agencyDtos = session.QueryOver<DealerShip>(() => dealerShipAlias)
                                   .JoinAlias(ds => ds.User, () => userAlias)
                                   .Where(d => d.Manufacturer.Id == manufacturerId)

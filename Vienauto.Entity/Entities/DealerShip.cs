@@ -4,6 +4,6 @@
     {
         public virtual User User { get; set; }
         public virtual Manufacturer Manufacturer { get; set; }
-    }
+    } 
 }
 

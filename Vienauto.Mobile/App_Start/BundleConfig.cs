@@ -22,7 +22,13 @@ namespace VienautoRemake
             var registerCss = BundleConfigHelper.GetVirtualPaths(BundConfigType.Css, "bunleRegisterDirectory");
             bundles.Add(new StyleBundle(AppSetting.BundleCssRegisterPath).Include(registerCss));
 
-            //js
+            //js            
+            var jqueryJs = BundleConfigHelper.GetVirtualPaths(BundConfigType.Js, "bunleJqueryDirectory");
+            bundles.Add(new ScriptBundle(AppSetting.BundleJsJqueryPath).Include(jqueryJs));
+
+            var jqueryValidateJs = BundleConfigHelper.GetVirtualPaths(BundConfigType.Js, "bunleJqueryValidateDirectory");
+            bundles.Add(new ScriptBundle(AppSetting.BundleJsJqueryValidatePath).Include(jqueryValidateJs));
+
             var coreJs = BundleConfigHelper.GetVirtualPaths(BundConfigType.Js, "bunleCoreDirectory");
             bundles.Add(new ScriptBundle(AppSetting.BundleJsCorePath).Include(coreJs));
 

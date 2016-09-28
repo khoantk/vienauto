@@ -12,6 +12,8 @@
 <!-- Js -->
 @Scripts.Render(AppSetting.BundleJsCorePath)
 @Scripts.Render(AppSetting.BundleJsRegisterPath)
+@Scripts.Render(AppSetting.BundleJsJqueryPath)
+@Scripts.Render(AppSetting.BundleJsJqueryValidatePath)
 
 <!DOCTYPE html>
 <html>
@@ -32,14 +34,14 @@
                 <div class="content">
                     <div class="container">
                         <div id="selectOption">
-                            <input id="radAgent" type="radio" name="form" checked />&nbsp;Dành cho hãng và đại lý
-                            <input id="radMember" type="radio" name="form" />&nbsp;Dành cho thành viên
+                            <input id="radMember" type="radio" name="form" checked />&nbsp;Dành cho thành viên
+                            <input id="radAgent" type="radio" name="form" />&nbsp;Dành cho hãng và đại lý                            
                         </div>
                         <ul id="tabs">
                             <li id="liMember" class="tabMember active">Thông tin thành viên</li>
                             <li id="liAgent" class="tabAgent">Thông tin hãng & đại lý</li>
                         </ul>
-                        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { id = "frmRegister" }))
+                        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { id = "frmRegister", name = "frmRegister" }))
                         {
                             @Html.ValidationSummary()
                             var errors = ViewBag.ErrorMessage;
@@ -117,7 +119,7 @@
                                                 </a> được ban hành bởi hệ thống <b>Vienauto.com</b>
                                             </div>
                                             <div class="pt-line" align="center">
-                                                <button type="submit" class="btn btn-primary" id="btnUserRegister">Đăng ký thành viên</button>
+                                                <input type="submit" class="btn btn-primary" id="btnUserRegister" value="Đăng ký thành viên">
                                             </div>
                                         </div>
                                     </div>
@@ -234,5 +236,6 @@
             </div>
         </div>
     </div>
+    
 </body>
 </html>
