@@ -29,6 +29,7 @@ namespace Vienauto.Entity.Entities
         public virtual string ToaDoMap { get; set; }
         public virtual string ZoomMap { get; set; }
         public virtual string SubDaiLy { get; set; }
+        public virtual int changesub { get; set; }
         public virtual string Answer_Question { get; set; }
         public virtual int Point { get; set; }
         public virtual int Active { get; set; }

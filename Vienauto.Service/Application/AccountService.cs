@@ -65,27 +65,24 @@ namespace Vienauto.Service.Application
                     if (existedUser)
                         result.AddError(ErrorCode.DuplicateUser);
 
-                    var newUser = new User
-                    {
-                        UserName = registerDto.UserName,
-                        PassWord = EncodingExtensions.EncodeMD5(registerDto.PassWord),
-                        FullName = registerDto.FullName,
-                        Phone = registerDto.Phone,
-                        Mobile = registerDto.Mobile,
-                        Active = registerDto.Active,
-                        NgayGiaNhap = DateTime.Now,
-                        Level = Get<Level>(registerDto.LevelId),
-                        Question = Get<Question>(registerDto.QuestionId),
-                        Avatar = registerDto.Avatar,
-                        Point = registerDto.Point,
-                        Parent = Get<User>(registerDto.Parent),
-                        TienChietKhau = registerDto.Discount,
-                        ZoomMap = registerDto.ZoomMap,
-                        ToaDoMap = registerDto.MapCoordinate,
-                        changesub = registerDto.changesub
-                    };
-                    registerDto.UserId = Create(newUser);
-                    CommitChanges();                    
+                    var user = new User();
+                    user.UserName = registerDto.UserName;
+                    user.PassWord = registerDto.PassWord;
+                    user.FullName = registerDto.FullName;
+                    user.Phone = registerDto.Phone;
+                    user.Mobile = registerDto.Mobile;
+                    user.Active = registerDto.Active;
+                    user.Avatar = registerDto.Avatar;
+                    user.NgayGiaNhap = registerDto.JoinDate;
+                    user.changesub = registerDto.ChangeSub;
+                    user.TienChietKhau = registerDto.Discount;
+                    user.Province = Get<Province>(registerDto.ProvinceId);
+                    user.ToaDoMap = user.Province?.ToaDoMap2;
+                    user.ZoomMap = user.Province?.ZoomMap2.ToString();
+                    user.Level = Get<Level>(registerDto.LevelId);
+                    user.Question = Get<Question>(registerDto.QuestionId);
+                    registerDto.UserId = Create(user);
+                    CommitChanges();
                 }
             }
             catch (Exception ex)
@@ -106,46 +103,53 @@ namespace Vienauto.Service.Application
                     if (existedUser)
                         result.AddError(ErrorCode.DuplicateUser);
 
-                    var newUser = new User
-                    {
-                        UserName = registerDto.UserName,
-                        PassWord = registerDto.PassWord,
-                        FullName = registerDto.FullName,
-                        Phone = registerDto.Phone,
-                        Mobile = registerDto.Mobile,
-                        Active = registerDto.Active,
-                        NgayGiaNhap = DateTime.Now,
-                        Level = Get<Level>(registerDto.LevelId),
-                        Question = Get<Question>(registerDto.QuestionId)
-                    };
-                    registerDto.UserId = Create(newUser);
+                    var user = new User();
+                    user.UserName = registerDto.UserName;
+                    user.PassWord = registerDto.PassWord;
+                    user.FullName = registerDto.FullName;
+                    user.Phone = registerDto.Phone;
+                    user.Mobile = registerDto.Mobile;
+                    user.Active = registerDto.Active;
+                    user.Avatar = registerDto.Avatar;
+                    user.NgayGiaNhap = registerDto.JoinDate;
+                    user.changesub = registerDto.ChangeSub;
+                    user.TienChietKhau = registerDto.Discount;
+                    user.Province = Get<Province>(registerDto.ProvinceId);
+                    user.ToaDoMap = user.Province?.ToaDoMap2;
+                    user.ZoomMap = user.Province?.ZoomMap2.ToString();
+                    user.Level = Get<Level>(registerDto.LevelId);
+                    user.Question = Get<Question>(registerDto.QuestionId);
+                    registerDto.UserId = Create(user);
                     CommitChanges();
 
-                    var agent = new Agency
+                    if (registerDto.UserId <= 0)
+                        result.AddError(ErrorCode.RegisterAgentFail);
+                    else
                     {
-                        kichhoat = 1,
-                        filedinhkem = "",
-                        ngaydangki = DateTime.Now,
-                        Ten_CTY = registerDto.CompanyName,
-                        Diachi_giaodich = registerDto.TransactionAddress,
-                        MaSoThue = registerDto.TaxNumber,
-                        HoTen_Nguoidaidien = registerDto.DeputyFullName,
-                        Dien_thoai = registerDto.AgentPhone,
-                        Didong = registerDto.Mobile,
-                        Email_kichhoat = registerDto.EmailVerification,
-                        Vitri = registerDto.Location,
-                        Chinhanh = registerDto.TotalBranches,
-                        Soxe_giaodich = registerDto.NumberCarTransaction,
-                        Xe_phanphoi = registerDto.CarDistribution,
-                        CanTuVanthem = registerDto.NeedConsultMore ? "Có" : "Không",
-                        lamsao_cokh = registerDto.IntroduceCustomer,
-                        KH_cuaban = registerDto.YourCustomer,
-                        Banbietchungtoitudau = registerDto.HowToKnowUs,
-                        Banla_TV = registerDto.IsUser ? "rồi" : "chưa",
-                        denghi_cungcapdonhan = registerDto.CreateOrders ? "cần" : "không cần",
-                        User = Get<User>(registerDto.UserId)
-                    };
-                    CreateOrUpdate(agent);
+                        var agent = new Agency();
+                        agent.kichhoat = 1;
+                        agent.filedinhkem = "";
+                        agent.ngaydangki = DateTime.Now;
+                        agent.Ten_CTY = registerDto.CompanyName;
+                        agent.Diachi_giaodich = registerDto.TransactionAddress;
+                        agent.MaSoThue = registerDto.TaxNumber;
+                        agent.HoTen_Nguoidaidien = registerDto.DeputyFullName;
+                        agent.Dien_thoai = registerDto.AgentPhone;
+                        agent.Didong = registerDto.Mobile;
+                        agent.Email_kichhoat = registerDto.EmailVerification;
+                        agent.Vitri = registerDto.Location;
+                        agent.Chinhanh = registerDto.TotalBranches;
+                        agent.Soxe_giaodich = registerDto.NumberCarTransaction;
+                        agent.Xe_phanphoi = registerDto.CarDistribution;
+                        agent.CanTuVanthem = registerDto.NeedConsultMore ? "Có" : "Không";
+                        agent.lamsao_cokh = registerDto.IntroduceCustomer;
+                        agent.KH_cuaban = registerDto.YourCustomer;
+                        agent.Banbietchungtoitudau = registerDto.HowToKnowUs;
+                        agent.Banla_TV = registerDto.IsUser ? "rồi" : "chưa";
+                        agent.denghi_cungcapdonhan = registerDto.CreateOrders ? "cần" : "không cần";
+                        agent.User = Get<User>(registerDto.UserId);
+                        CreateOrUpdate(agent);
+                    }
                 }
             }
             catch (Exception ex)

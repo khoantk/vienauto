@@ -7,6 +7,7 @@
         LogInFail,
         DuplicateUser,
         RegisterUserFail,
+        RegisterAgentFail,
         RegisterAgentUserFail,
         FailToListAll,
         FailToListAllQuestion,

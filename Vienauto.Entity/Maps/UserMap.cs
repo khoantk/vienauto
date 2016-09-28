@@ -30,12 +30,13 @@ namespace Vienauto.Entity.Maps
             Property(x => x.ToaDoMap);
             Property(x => x.ZoomMap);
             Property(x => x.SubDaiLy);
+            Property(x => x.changesub);
             Property(x => x.Answer_Question);
             Property(x => x.Point);
             Property(x => x.Active);
+            Property(x => x.NgayGiaNhap);
             Property(x => x.TienChietKhau);
             Property(x => x.LastLogin, map => map.Column("Last_Login"));
-            Property(x => x.NgayGiaNhap);
             ManyToOne(x => x.Level, map => map.Column("Id_Level"));
             ManyToOne(x => x.Question, map => map.Column("Id_Question"));
             ManyToOne(x => x.Parent, map => map.Column("Parent"));

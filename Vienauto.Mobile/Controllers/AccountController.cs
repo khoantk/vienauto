@@ -60,6 +60,7 @@ namespace VienautoMobile.Controllers
             registerModel.AgentId = 0;
             registerModel.LocationId = 0;
             registerModel.TotalBranchId = 2;
+            registerModel.IsRegsiterAgent = true;
             registerModel.NumberCarTransactionId = "nhỏ hơn 5 chiếc";
             registerModel.CarDistributionId = "Trong nước";
             registerModel.IntroduceCustomerId = "Trong nước";
@@ -72,7 +73,7 @@ namespace VienautoMobile.Controllers
         [HttpPost]
         public ActionResult Register(RegisterFormModel registerModel)
         {
-            //ValidateForm(registerModel);
+            ValidateForm(registerModel);
             if (ModelState.IsValid)
             {
                 var result = new ServiceResult<RegisterDto>();
@@ -124,7 +125,7 @@ namespace VienautoMobile.Controllers
                 ModelState.AddModelError("PassWord", "Chưa nhập mật khẩu.");
             else if (string.IsNullOrEmpty(model.ConfirmPassword))
                 ModelState.AddModelError("ConfirmPassword", "Chưa nhập xác nhận mật khẩu.");
-            else if (!string.Equals(model.ConfirmPassword, model.Password))
+            else if (model.ConfirmPassword != model.Password)
                 ModelState.AddModelError("IsEquals", "Mật khẩu xác nhận không trùng khớp.");
             else if (int.Equals(model.QuestionId, 0))
                 ModelState.AddModelError("QuestionId", "Chưa chọn câu hỏi bí mật.");
