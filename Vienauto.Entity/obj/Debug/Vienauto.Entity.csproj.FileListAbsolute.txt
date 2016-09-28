@@ -1,8 +1,0 @@
-D:\MyJobs\Web\vienauto\Vienauto.Entity\bin\Debug\Vienauto.Entity.dll
-D:\MyJobs\Web\vienauto\Vienauto.Entity\bin\Debug\Vienauto.Entity.pdb
-D:\MyJobs\Web\vienauto\Vienauto.Entity\bin\Debug\Iesi.Collections.dll
-D:\MyJobs\Web\vienauto\Vienauto.Entity\bin\Debug\NHibernate.dll
-D:\MyJobs\Web\vienauto\Vienauto.Entity\bin\Debug\Iesi.Collections.xml
-D:\MyJobs\Web\vienauto\Vienauto.Entity\bin\Debug\NHibernate.xml
-D:\MyJobs\Web\vienauto\Vienauto.Entity\obj\Debug\Vienauto.Entity.dll
-D:\MyJobs\Web\vienauto\Vienauto.Entity\obj\Debug\Vienauto.Entity.pdb

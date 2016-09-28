@@ -61,6 +61,10 @@ namespace Vienauto.Service.Application
             {
                 using (var session = Session)
                 {
+                    var existedUser = Duplicate<User>(x => x.UserName == registerDto.UserName);
+                    if (existedUser)
+                        result.AddError(ErrorCode.DuplicateUser);
+
                     var newUser = new User
                     {
                         UserName = registerDto.UserName,
@@ -69,7 +73,7 @@ namespace Vienauto.Service.Application
                         Phone = registerDto.Phone,
                         Mobile = registerDto.Mobile,
                         Active = registerDto.Active,
-                        NgayGiaNhap = registerDto.JoinDate,
+                        NgayGiaNhap = DateTime.Now,
                         Level = Get<Level>(registerDto.LevelId),
                         Question = Get<Question>(registerDto.QuestionId)
                     };
@@ -91,6 +95,10 @@ namespace Vienauto.Service.Application
             {
                 using (var session = Session)
                 {
+                    var existedUser = Duplicate<User>(x => x.UserName == registerDto.UserName);
+                    if (existedUser)
+                        result.AddError(ErrorCode.DuplicateUser);
+
                     var newUser = new User
                     {
                         UserName = registerDto.UserName,
@@ -99,7 +107,7 @@ namespace Vienauto.Service.Application
                         Phone = registerDto.Phone,
                         Mobile = registerDto.Mobile,
                         Active = registerDto.Active,
-                        NgayGiaNhap = registerDto.JoinDate,
+                        NgayGiaNhap = DateTime.Now,
                         Level = Get<Level>(registerDto.LevelId),
                         Question = Get<Question>(registerDto.QuestionId)
                     };

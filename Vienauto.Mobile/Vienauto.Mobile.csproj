@@ -220,28 +220,32 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\css\core\bootstrap-theme.css" />
-    <Content Include="Assets\css\core\bootstrap.css" />
-    <Content Include="Assets\css\module\login\login.css" />
-    <Content Include="Assets\css\module\register\register.css" />
+    <Content Include="Assets\css\bootstrap\1a_bootstrap-theme.css" />
+    <Content Include="Assets\css\bootstrap\1b_bootstrap-theme.css.map" />
+    <Content Include="Assets\css\bootstrap\1c_bootstrap.css" />
+    <Content Include="Assets\css\bootstrap\1d_bootstrap.css.map" />
+    <Content Include="Assets\css\core\1a_core.css" />
+    <Content Include="Assets\css\module\login\1a_login.css" />
+    <Content Include="Assets\css\module\register\1a_register.css" />
     <Content Include="Assets\image\grey-disclosure-arrow-up-down.png" />
-    <Content Include="Assets\js\core\ajax.js" />
-    <Content Include="Assets\js\core\bootstrap.js" />
-    <Content Include="Assets\js\core\core.js" />
-    <Content Include="Assets\js\core\form.js" />
-    <Content Include="Assets\js\core\jquery-3.1.0.js" />
-    <Content Include="Assets\js\core\jquery-3.1.0.slim.js" />
-    <Content Include="Assets\js\core\jquery.blockUI.js" />
-    <Content Include="Assets\js\core\jquery.form.js" />
-    <Content Include="Assets\js\core\jquery.tmpl.js" />
-    <Content Include="Assets\js\core\jquery.validate.js" />
-    <Content Include="Assets\js\core\jquery.validate.unobtrusive.js" />
-    <Content Include="Assets\js\core\modernizr-2.6.2.js" />
-    <Content Include="Assets\js\core\respond.js" />
-    <Content Include="Assets\js\core\scripts.js" />
-    <Content Include="Assets\js\core\vienauto.popup.js" />
-    <Content Include="Assets\js\module\login\login.js" />
-    <Content Include="Assets\js\module\register\register.js" />
+    <Content Include="Assets\js\core\1l_ajax.js" />
+    <Content Include="Assets\js\core\1e_bootstrap.js" />
+    <Content Include="Assets\js\core\1o_core.js" />
+    <Content Include="Assets\js\core\1m_form.js" />
+    <Content Include="Assets\js\core\1a_jquery-3.1.0.js" />
+    <Content Include="Assets\js\core\1b_jquery-3.1.0.slim.js" />
+    <Content Include="Assets\js\core\1j_jquery.blockUI.js" />
+    <Content Include="Assets\js\core\1e_jquery.form.js" />
+    <Content Include="Assets\js\core\1n_jquery.tmpl.js" />
+    <Content Include="Assets\js\core\1c_jquery.validate.js" />
+    <Content Include="Assets\js\core\1d_jquery.validate.unobtrusive.js" />
+    <Content Include="Assets\js\core\1g_moment.js" />
+    <Content Include="Assets\js\core\1f_respond.js" />
+    <Content Include="Assets\js\core\1k_scripts.js" />
+    <Content Include="Assets\js\core\1i_toastr.js" />
+    <Content Include="Assets\js\core\1p_vienauto.popup.js" />
+    <Content Include="Assets\js\module\login\1a_login.js" />
+    <Content Include="Assets\js\module\register\1a_register.js" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -257,8 +261,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Assets\css\core\bootstrap-theme.css.map" />
-    <Content Include="Assets\css\core\bootstrap.css.map" />
     <None Include="Properties\PublishProfiles\vienautomobile.pubxml" />
     <None Include="Scripts\jquery-3.1.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -289,6 +291,7 @@
     <Content Include="Views\Account\SignIn.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="user.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

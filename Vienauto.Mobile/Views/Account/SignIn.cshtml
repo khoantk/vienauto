@@ -1,17 +1,15 @@
-﻿@model VienautoMobile.Models.Form.AccountFormModel
+﻿@using Vienauto.Mobile.Configuration
+@model VienautoMobile.Models.Form.AccountFormModel
 @{
     Layout = null;
 }
 
 <!-- Css -->
-@Styles.Render("~/bundles/css/core")
-@Styles.Render("~/bundles/css/login")
-@Styles.Render("~/bundles/css/register")
+@Styles.Render(AppSetting.BundleCssCorePath)
+@Styles.Render(AppSetting.BundleCssLoginPath)
 <!-- Js -->
-@Scripts.Render("~/bundles/js/core")
-@*@Scripts.Render("~/bundles/js/jqueryval")*@
-@Scripts.Render("~/bundles/js/login")
-@Scripts.Render("~/bundles/js/register")
+@Scripts.Render(AppSetting.BundleJsCorePath)
+@Scripts.Render(AppSetting.BundleJsLoginPath)
  
 <!DOCTYPE html>
 <html class="ui-mobile">

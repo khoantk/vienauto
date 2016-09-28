@@ -54,37 +54,19 @@ namespace VienautoMobile.Controllers
 
         public ActionResult Register()
         {
-            var registerViewModel = new RegisterFormModel();
-            registerViewModel.QuestionId = 0;
-            registerViewModel.DealerShipId = 0;
-            registerViewModel.AgentId = 0;
-            registerViewModel.LocationId = 0;
-            registerViewModel.TotalBranchId = 2;
-            registerViewModel.NumberCarTransactionId = "nhỏ hơn 5 chiếc";
-            registerViewModel.CarDistributionId = "Trong nước";
-            registerViewModel.IntroduceCustomerId = "Trong nước";
-            registerViewModel.YourCustomerId = "Tiếp thị quảng cáo";
-            registerViewModel.HowToKnowUsId = "Email quảng cáo";
-
-            var questions = LoadQuestions();
-            registerViewModel.Questions = questions.ToSelectList(q => q.QuestionName, q => q.QuestionId.ToString(), "Chọn một câu hỏi và trả lời");
-
-            var dealerShips = LoadDealerShips();
-            registerViewModel.DealerShips = dealerShips.ToSelectList(ds => ds.ManufacturerName, ds => ds.ManufacturerId.ToString(), "Chọn hãng phân phối");
-
-            registerViewModel.Agents = new List<SelectListItem> { new SelectListItem { Text = "Chọn đại lý", Value = "0" } };
-
-            var locations = LoadLocations();
-            registerViewModel.Locations = locations.ToSelectList(l => l.LocationName, l => l.LocationId.ToString(), "Chọn vị trí");
-
-            registerViewModel.TotalBranches = ConfigSection.GetDropDownList("TotalBranches", "Account");
-            registerViewModel.NumberCarTransactions = ConfigSection.GetDropDownList("NumberCarTransactions", "Account");
-            registerViewModel.CarDistributions = ConfigSection.GetDropDownList("CarDistributions", "Account");
-            registerViewModel.IntroduceCustomer = ConfigSection.GetDropDownList("IntroduceCustomer", "Account");
-            registerViewModel.YourCustomer = ConfigSection.GetDropDownList("YourCustomer", "Account");
-            registerViewModel.HowToKnowUs = ConfigSection.GetDropDownList("HowToKnowUs", "Account");
-
-            return View(registerViewModel);
+            var registerModel = new RegisterFormModel();
+            registerModel.QuestionId = 0;
+            registerModel.DealerShipId = 0;
+            registerModel.AgentId = 0;
+            registerModel.LocationId = 0;
+            registerModel.TotalBranchId = 2;
+            registerModel.NumberCarTransactionId = "nhỏ hơn 5 chiếc";
+            registerModel.CarDistributionId = "Trong nước";
+            registerModel.IntroduceCustomerId = "Trong nước";
+            registerModel.YourCustomerId = "Tiếp thị quảng cáo";
+            registerModel.HowToKnowUsId = "Email quảng cáo";
+            LoadDropdownListRegisterModel(registerModel);
+            return View(registerModel);
         }
 
         [HttpPost]
@@ -102,10 +84,15 @@ namespace VienautoMobile.Controllers
                     result = _accountService.SignUpUser(registerDto);
 
                 if (result.HasErrors)
+                {
+                    ViewBag.ErrorMessage = result.Errors; 
+                    LoadDropdownListRegisterModel(registerModel);
                     return View(registerModel);
+                }
 
                 return RedirectToAction("Index", "Home");
             }
+            LoadDropdownListRegisterModel(registerModel);
             return View(registerModel);
         }
 
@@ -129,19 +116,24 @@ namespace VienautoMobile.Controllers
         {
             if (string.IsNullOrEmpty(model.FirstName))
                 ModelState.AddModelError("FirstName", "Chưa nhập họ và chữ lót.");
-            if (string.IsNullOrEmpty(model.LastName))
+            else if (string.IsNullOrEmpty(model.LastName))
                 ModelState.AddModelError("PassWord", "Chưa nhập tên.");
-            if (string.IsNullOrEmpty(model.Email))
+            else if (string.IsNullOrEmpty(model.Email))
                 ModelState.AddModelError("Email", "Chưa nhập email.");
-            if (string.IsNullOrEmpty(model.Password))
+            else if (string.IsNullOrEmpty(model.Password))
                 ModelState.AddModelError("PassWord", "Chưa nhập mật khẩu.");
-            if (string.IsNullOrEmpty(model.ConfirmPassword))
-                ModelState.AddModelError("ConfirmPassword", "Chưa xác nhận mật khẩu.");            
-            if (string.Equals(model.ConfirmPassword, model.Password))
-                ModelState.AddModelError("IsEquals", "Mật khẩu không khớp.");
-            if (int.Equals(model.QuestionId, 0))
+            else if (string.IsNullOrEmpty(model.ConfirmPassword))
+                ModelState.AddModelError("ConfirmPassword", "Chưa nhập xác nhận mật khẩu.");
+            else if (string.Equals(model.ConfirmPassword, model.Password))
+                ModelState.AddModelError("IsEquals", "Mật khẩu xác nhận không trùng khớp.");
+            else if (int.Equals(model.QuestionId, 0))
                 ModelState.AddModelError("QuestionId", "Chưa chọn câu hỏi bí mật.");
-            if (model.IsRegsiterAgent) { 
+            else if (string.IsNullOrEmpty(model.Answer))
+                ModelState.AddModelError("Answer", "Chưa nhập câu trả lời. Nó rất cần thiết khi khôi phục mật khẩu.");
+            else if (!model.AgreeWithUs)
+                ModelState.AddModelError("AgreeWithUs", "Vui lòng chọn đồng ý với các điều khoản của chúng tôi.");
+            else if (model.IsRegsiterAgent)
+            {
                 if (string.IsNullOrEmpty(model.CompanyName))
                     ModelState.AddModelError("CompanyName", "Chưa nhập tên công ty.");
                 if (string.IsNullOrEmpty(model.TransactionAddress))
@@ -154,6 +146,37 @@ namespace VienautoMobile.Controllers
             if (Url.IsLocalUrl(returnUrl))
                 return Redirect(returnUrl);
             return RedirectToAction("Index", "Home");
+        }
+
+        private void LoadDropdownListRegisterModel(RegisterFormModel registerFormModel)
+        {
+            var questions = LoadQuestions();
+            registerFormModel.Questions = questions.ToSelectList(q => q.QuestionName, q => q.QuestionId.ToString(), "Chọn một câu hỏi và trả lời");
+
+            var dealerShips = LoadDealerShips();
+            registerFormModel.DealerShips = dealerShips.ToSelectList(ds => ds.ManufacturerName, ds => ds.ManufacturerId.ToString(), "Chọn hãng phân phối");
+
+            registerFormModel.Agents = LoadAgentsDealership(registerFormModel.DealerShipId);
+
+            var locations = LoadLocations();
+            registerFormModel.Locations = locations.ToSelectList(l => l.LocationName, l => l.LocationId.ToString(), "Chọn vị trí");
+
+            registerFormModel.TotalBranches = ConfigSection.GetDropDownList("TotalBranches", "Account");
+            registerFormModel.NumberCarTransactions = ConfigSection.GetDropDownList("NumberCarTransactions", "Account");
+            registerFormModel.CarDistributions = ConfigSection.GetDropDownList("CarDistributions", "Account");
+            registerFormModel.IntroduceCustomer = ConfigSection.GetDropDownList("IntroduceCustomer", "Account");
+            registerFormModel.YourCustomer = ConfigSection.GetDropDownList("YourCustomer", "Account");
+            registerFormModel.HowToKnowUs = ConfigSection.GetDropDownList("HowToKnowUs", "Account");
+        }
+
+        private List<SelectListItem> LoadAgentsDealership(int dealerShipId)
+        {
+            var selectList = new List<SelectListItem>();
+            var agentDtos = _agencyService.GetAgencyByDealerShip(dealerShipId);
+            if (!agentDtos.HasErrors)
+                agentDtos.Target.ForEach(agent => 
+                { selectList.Add(new SelectListItem { Text = agent.FullName, Value = agent.AgencyId.ToString() }); });
+            return selectList;
         }
 
         private List<QuestionViewModel> LoadQuestions()
