@@ -45,5 +45,6 @@ namespace Vienauto.Entity.Entities
         public virtual IList<CarInfoReview> CarInfoReviews { get; set; }
         public virtual IList<AgencyTime> AgencyTimes { get; set; }
         public virtual IList<DealerShip> DealerShips { get; set; }
+        public virtual int changesub { get; set; }
     }
 }

@@ -37,7 +37,8 @@
             TransactionAddress: "Chưa nhập địa chỉ giao dịch."
         },
         submitHandler: function (form) {
-            form.submit();
+            alert(test);
+            //form.submit();
         }
     });
 

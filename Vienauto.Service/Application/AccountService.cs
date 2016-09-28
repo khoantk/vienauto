@@ -68,17 +68,24 @@ namespace Vienauto.Service.Application
                     var newUser = new User
                     {
                         UserName = registerDto.UserName,
-                        PassWord = registerDto.PassWord,
+                        PassWord = EncodingExtensions.EncodeMD5(registerDto.PassWord),
                         FullName = registerDto.FullName,
                         Phone = registerDto.Phone,
                         Mobile = registerDto.Mobile,
                         Active = registerDto.Active,
                         NgayGiaNhap = DateTime.Now,
                         Level = Get<Level>(registerDto.LevelId),
-                        Question = Get<Question>(registerDto.QuestionId)
+                        Question = Get<Question>(registerDto.QuestionId),
+                        Avatar = registerDto.Avatar,
+                        Point = registerDto.Point,
+                        Parent = Get<User>(registerDto.Parent),
+                        TienChietKhau = registerDto.Discount,
+                        ZoomMap = registerDto.ZoomMap,
+                        ToaDoMap = registerDto.MapCoordinate,
+                        changesub = registerDto.changesub
                     };
                     registerDto.UserId = Create(newUser);
-                    CommitChanges();
+                    CommitChanges();                    
                 }
             }
             catch (Exception ex)
