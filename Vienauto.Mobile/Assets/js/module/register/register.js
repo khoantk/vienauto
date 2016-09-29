@@ -73,40 +73,42 @@
         }
     });
 
-    Ajax.postOnChange($("#DealerShipId"), function () { return $("#DealerShips").val(); });
-    $("#DealerShipId").on("ajaxSuccess", function (target, response) {
-        var result = respond.data;
-        if (typeof result != 'undefined' && typeof result != null) {
+    $("#DealerShipId").change(function() {
+        Ajax.bind("/account/getagencydealership/", { dealerShipId: $(this).val() }, $("#AgentId"),
+        function ($target, response) {
             var ddlInnerHtml = "";
-            $.each(result, function (item) {
+            var result = response.data;
+            $.each(result, function (index, item) {
                 ddlInnerHtml += "<option value='" + item.AgencyId + "'>" + item.FullName + "</option>";
             });
-            $("#AgentId").html(ddlInnerHtml);
-        }
+            $target.html(ddlInnerHtml);
+        });
     });
 
-    $("#HomePhone").keypress(function (e) {
-        if (e.which !== 8 && e.which !== 0 && e.which !== 32 && (e.which >= 100 && e.which <= 122))
+    $("#HomePhone").keypress(function(e) {
+        if(e.which !== 8 && e.which !== 0 && e.which !== 32 && (e.which >= 100 && e.which <= 122))
             return false;
         $("#AgentPhone").val($(this).val());
-    });
-    $("#Mobile").keypress(function (e) {
-        if (e.which !== 8 && e.which !== 0 && e.which !== 32 && (e.which >= 100 && e.which <= 122))
+        });
+
+    $("#Mobile").keypress(function(e) {
+        if(e.which !== 8 && e.which !== 0 && e.which !== 32 && (e.which >= 100 && e.which <= 122))
             return false;
         $("#AgentMobile").val($(this).val());
-    });
-    $("#Email").blur(function (e) {
-        if (e.which !== 8 && e.which !== 0 && e.which !== 32 && (e.which >= 100 && e.which <= 122))
+        });
+
+    $("#Email").blur(function(e) {
+        if(e.which !== 8 && e.which !== 0 && e.which !== 32 && (e.which >= 100 && e.which <= 122))
             return false;
         $("#AgentEmail").val($(this).val());
-    });
-});
+        });
+        });
 
 function showUserTab() {
-    if ($("#liAgent").hasClass("focus"))
+    if($("#liAgent").hasClass("focus"))
         $("#liAgent").removeClass("focus");
 
-    if ($("#liAgent").hasClass("active"))
+    if($("#liAgent").hasClass("active"))
         $("#liAgent").removeClass("active");
 
     $("#liAgent").hide();
@@ -115,23 +117,23 @@ function showUserTab() {
     $("#liMember").addClass("focus");
 
     $("#memberForm").addClass("active");
-    if ($("#agentForm").hasClass("active"))
+    if($("#agentForm").hasClass("active"))
         $("#agentForm").removeClass("active");
 
     $("#btnUserRegister").show();
     $("#IsRegsiterAgent").val("False");
-}
+    }
 
 function showUserAgentTab() {
     $("#liMember").addClass("focus");
     $("#liAgent").addClass("active");
-    if ($("#liAgent").hasClass("focus"))
+    if($("#liAgent").hasClass("focus"))
         $("#liAgent").removeClass("focus");
 
     $("#memberForm").addClass("active");
-    if ($("#agentForm").hasClass("active"))
+    if($("#agentForm").hasClass("active"))
         $("#agentForm").removeClass("active");
 
     $("#btnUserRegister").hide();
     $("#IsRegsiterAgent").val("True");
-}
+    }

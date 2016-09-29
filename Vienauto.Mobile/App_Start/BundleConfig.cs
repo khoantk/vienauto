@@ -38,7 +38,7 @@ namespace VienautoRemake
             var registerJs = BundleConfigHelper.GetVirtualPaths(BundConfigType.Js, "bunleRegisterDirectory");
             bundles.Add(new ScriptBundle(AppSetting.BundleJsRegisterPath).Include(registerJs));
 
-            BundleTable.EnableOptimizations = true;
+            BundleTable.EnableOptimizations = false;
         }
     }
 }
