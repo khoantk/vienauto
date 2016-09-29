@@ -36,7 +36,7 @@
             CompanyName: "Chưa nhập tên công ty.",
             TransactionAddress: "Chưa nhập địa chỉ giao dịch."
         },
-        submitHandler: function (form) {            
+        submitHandler: function (form) {
             form.submit();
         }
     });
@@ -73,7 +73,7 @@
         }
     });
 
-    /*Ajax.postOnChange($("#DealerShipId"), function () { return $("#DealerShips").val(); });
+    Ajax.postOnChange($("#DealerShipId"), function () { return $("#DealerShips").val(); });
     $("#DealerShipId").on("ajaxSuccess", function (target, response) {
         var result = respond.data;
         if (typeof result != 'undefined' && typeof result != null) {
@@ -83,12 +83,8 @@
             });
             $("#AgentId").html(ddlInnerHtml);
         }
-    });*/
-
-    $("#DealerShipId").change(function () {
-        loadAgencyByDealerShip($(this).val());        
     });
-        
+
     $("#HomePhone").keypress(function (e) {
         if (e.which !== 8 && e.which !== 0 && e.which !== 32 && (e.which >= 100 && e.which <= 122))
             return false;
@@ -105,18 +101,6 @@
         $("#AgentEmail").val($(this).val());
     });
 });
-
-function loadAgencyByDealerShip(dealerShipId) {
-    $.get("/Account/GetAgencyDealerShip", { dealerShipId: dealerShipId }, function (response) {
-        var selectHtml = "<option value='0'>Chọn đại lý</option>";
-        if (response.data != "") {
-            $.each(response.data, function (index, d) {
-                selectHtml += "<option value='" + d.AgencyId + "'>" + d.FullName + "</option>";
-            });
-        }
-        $("#AgentId").html(selectHtml);
-    });
-}
 
 function showUserTab() {
     if ($("#liAgent").hasClass("focus"))
