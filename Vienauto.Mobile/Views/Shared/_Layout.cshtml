@@ -1,11 +1,165 @@
-﻿<!DOCTYPE html>
-<html>
+﻿@using Vienauto.Mobile.Configuration
+<!DOCTYPE html>
+<html class="ui-mobile">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My ASP.NET Application</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>New Cars, Used Cars, Car Reviews | Cars.com Mobile Home Page</title>
+    @Styles.Render(AppSetting.BundleCssCorePath)
 </head>
-<body>
-    @RenderBody()
+<body class="ui-mobile-viewport ui-overlay-a landscape">
+    <div id="fb-root" class="fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>
+    <div data-role="page" id="home" data-theme="a" data-title="New Cars, Used Cars, Car Reviews | Cars.com Mobile Home Page" data-url="home" tabindex="0" class="ui-page ui-body-a ui-page-active" style="min-height: 640px;">
+        <div id="app-banner"><span>Download <strong>Cars.com <span id="platform"></span> App</strong> for Free</span></div>
+        <div data-role="header" class="ui-header ui-bar-a" role="banner">
+            <div class="ui-title-wrapper">
+                <div class="ui-title" role="heading" aria-level="1">
+                    <div id="carslogo">&nbsp;</div>
+                    <div id="togglenav-button" class="hidden-at-start">&nbsp;</div>
+                </div>
+            </div>
+            <nav class="global-navbar">
+                <a href="#" class="findyourcar ui-link" data-page="findyourcar">Find Your Car</a>
+                <a href="#" class="bookvalue ui-link" data-page="bookvalue">Used Car Values</a>
+                <a href="#" class="research ui-link" data-page="research">Research Car Models</a>
+                <a href="#" class="sellandtrade ui-link" data-page="sellandtrade">Sell Your Car</a>
+                <a href="#" class="findadealer ui-link" data-page="findadealer">Find a Dealer</a>
+                <a href="#" class="autorepair ui-link" data-page="autorepair">Service &amp; Repair</a>
+                <a href="#" class="calculators ui-link" data-page="calculators">Calculators</a>
+                <a href="#" class="account ui-link" data-page="login"><span data-page="login" class="new-label">New!</span> Log In</a>
+                <a href="#" class="favorites ui-link" data-page="favorites">Favorites (0)</a>
+                <a href="#" class="close ui-link">&nbsp;</a>
+            </nav>
+        </div>
+        @RenderBody()
+        <div data-role="footer" class="ui-footer ui-bar-a" role="contentinfo">
+            <p><a id="homeLink" href="http://www.cars.com?cmp=MobileSiteFooterLink&amp;aff=national" data-ajax="false" data-enhance="false">Full Site</a> | <a id="aboutCarsComLink" href="/#aboutus" data-enhance="false">About Cars.com</a></p>
+            <p>
+                <a id="feedbackLink" href="https://secure.opinionlab.com/ccc01/o.asp?id=VuvIfpRR" target="_blank" data-enhance="false">[+] Feedback</a> |
+                <a id="loginLink" href="https://m.cars.com/profile/#!login?continue=http%3A%2F%2Fm.cars.com%2F%23search" data-ajax="false" data-enhance="false">Log In</a>
+            </p>
+            <p>© 2016 Cars.com | <a id="termsOfServiceLink" href="/#terms" data-enhance="false">Terms of Service</a> | <a id="privacyPolicyLink" href="/#privacy" data-enhance="false">Privacy Statement</a></p>
+        </div>
+        <div class="sliding-pane" id="search-select-make-pane" style="z-index: 1003; left: 1920px;">
+            <div class="sliding-pane-mask">
+            </div>
+            <div class="sliding-pane-body">
+                <nav>
+                    <a href="#" data-ajax="false" class="ui-link"><span class="caret-left">&nbsp;</span></a><h1><span>Select a Make</span></h1>
+                </nav>
+                <div class="sliding-pane-container">
+                    <dl class="sorted-options">
+                        <dt></dt>
+                        <a class="ui-link"><dd data-text="All Makes" data-value="">All Makes</dd></a>
+                    </dl>
+                </div>
+            </div>
+        </div><div class="sliding-pane" id="search-select-model-pane" style="z-index: 1004; left: 1920px;">
+            <div class="sliding-pane-mask">
+            </div>
+            <div class="sliding-pane-body">
+                <nav>
+                    <a href="#" data-ajax="false" class="ui-link"><span class="caret-left">&nbsp;</span></a><h1><span>Select a Model</span></h1>
+                </nav>
+                <div class="sliding-pane-container">
+                    <dl class="sorted-options">
+                        <dt></dt>
+                        <a class="ui-link"><dd data-text="All Models" data-value="">All Models</dd></a>
+                    </dl>
+                </div>
+            </div>
+        </div><div class="sliding-pane" id="search-select-price-pane" style="z-index: 1003; left: 1920px;">
+            <div class="sliding-pane-mask">
+            </div>
+            <div class="sliding-pane-body">
+                <nav>
+                    <a href="#" data-ajax="false" class="ui-link"><span class="caret-left">&nbsp;</span></a><h1><span>Select a Max Price</span></h1>
+                </nav>
+                <div class="sliding-pane-container">
+                    <dl class="sorted-options">
+                        <a class="ui-link"><dd data-text="No Max" data-value="500000">No Max</dd></a>
+                    </dl>
+                </div>
+            </div>
+        </div><div class="sliding-pane" id="search-location-form-pane" style="z-index: 1003; left: 1920px;">
+            <div class="sliding-pane-mask">
+            </div>
+            <div class="sliding-pane-body">
+                <nav>
+                    <a href="#" data-ajax="false" class="ui-link"><span class="caret-left">&nbsp;</span></a><h1><span>Location</span></h1>
+                </nav>
+                <div class="sliding-pane-container">
+                    <form class="sliding-zip-form">
+                        <div class="zip-form-row">
+                            <div class="alert_message error"><span>Please enter a valid ZIP code.</span></div>
+                            <div class="col-one">
+                                <label class="input-label">ZIP Code</label>
+                            </div>
+                            <div class="col-two">
+                                <input class="zip ui-input-text ui-body-a ui-corner-all ui-shadow-inset" type="tel" name="zip" placeholder="ZIP Code" pattern="[0-9]*" maxlength="5" value="90001">
+                            </div>
+                        </div>
+                        <div class="zip-form-row">
+                            <div class="col-one">
+                                <label class="select-label">Search Within</label>
+                            </div>
+                            <div class="col-two">
+                                <div class="radius-select">
+                                    <div class="ui-select">
+                                        <div data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-icon="arrow-d" data-iconpos="right" data-theme="a" class="ui-btn ui-btn-up-a ui-shadow ui-btn-corner-all ui-btn-icon-right">
+                                            <span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text"><span class="distance">100 miles</span></span><span class="ui-icon ui-icon-arrow-d ui-icon-shadow">&nbsp;</span></span><select class="distance" name="radius">
+                                                <option value="10">10 miles</option>
+                                                <option value="20">20 miles</option>
+                                                <option value="30">30 miles</option>
+                                                <option value="40">40 miles</option>
+                                                <option value="50">50 miles</option>
+                                                <option value="75">75 miles</option>
+                                                <option value="100" selected="">100 miles</option>
+                                                <option value="150">150 miles</option>
+                                                <option value="250">250 miles</option>
+                                                <option value="500">500 miles</option>
+                                                <option value="99999">All miles</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="zip-form-row">
+                            <div data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-icon="null" data-iconpos="null" data-theme="r" class="ui-btn ui-btn-up-r ui-shadow ui-btn-corner-all ui-submit" aria-disabled="false"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Update Location</span></span><input data-role="button" type="submit" data-theme="r" class="primary ui-btn-hidden" value="Update Location" aria-disabled="false"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div data-role="page" id="terms" data-theme="a" data-title="Cars.com Terms of Service" data-url="terms">
+        <div data-role="banner"></div>
+        <div data-role="header"></div>
+        <div data-role="content"></div>
+        <div data-role="footer"></div>
+    </div>
+    <div data-role="page" id="privacy" data-theme="a" data-title="Cars.com Privacy Policy" data-url="privacy">
+        <div data-role="banner"></div>
+        <div data-role="header"></div>
+        <div data-role="content"></div>
+        <div data-role="footer"></div>
+    </div>
+    <div data-role="page" id="aboutus" data-theme="a" data-title="About Cars.com" data-url="aboutus">
+        <div data-role="banner"></div>
+        <div data-role="header"></div>
+        <div data-role="content"></div>
+        <div data-role="footer"></div>
+    </div>
+    <div data-role="page" id="buytest" data-theme="a" data-title="Test parameters" data-url="buytest">
+        <div data-role="header"></div>
+        <div data-role="content"></div>
+        <div data-role="footer"></div>
+    </div>
+    <div data-role="page" id="buy2" data-theme="a" data-title="Find your Car in Three Easy Steps" data-url="buy2">
+        <div data-role="header"></div>
+        <div data-role="content"></div>
+        <div data-role="footer"></div>
+    </div>
 </body>
 </html>

@@ -237,3 +237,18 @@ a:link, a:visited {
         background: url(email-icon.png) left center no-repeat;
     }
 }
+
+label.error {
+    color: #d63e3e;
+}
+
+.active {
+    display: inline-block !important;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+

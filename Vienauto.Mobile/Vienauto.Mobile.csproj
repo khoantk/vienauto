@@ -222,7 +222,9 @@
   <ItemGroup>
     <Content Include="Assets\css\bootstrap\a_bootstrap.css" />
     <Content Include="Assets\css\bootstrap\c_bootstrap-theme.css" />
-    <Content Include="Assets\css\core\core.css" />
+    <Content Include="Assets\css\core\b_core.css" />
+    <Content Include="Assets\css\core\a_jquery.mobile.structure-1.2.0.css" />
+    <Content Include="Assets\css\core\c_vienauto-mobile.css" />
     <Content Include="Assets\css\module\login\login.css" />
     <Content Include="Assets\css\module\register\register.css" />
     <Content Include="Assets\image\grey-disclosure-arrow-up-down.png" />
@@ -292,6 +294,7 @@
     <Content Include="user.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Views\Account\RedirectSignIn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

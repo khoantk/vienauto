@@ -1,5 +1,185 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Great to see you</h1>
+<div data-role="content" class="ui-content" role="main" style="min-height: 793px;">
+    <div id="hero-image-container">
+        <div id="hero-image" style="background: url('https://www.cstatic-images.com/stock/1000x1000/67/img645993624-1468960731767.jpg') center center / cover no-repeat rgb(255, 255, 255);"></div>
+        <h1><span>Hop in.</span><span>You're driving.</span></h1>
+        <div id="hero-image-mask" class="reveal"></div>
+        <div id="hero-ad-text">
+            <a href="#">
+                <p class="title">
+                    2016 Honda CR-V
+                    <span class="clickThru">&nbsp;</span>
+                </p>
+
+                <p class="sponsored-by">Sponsored By Honda</p>
+            </a>
+        </div>
+    </div>
+
+    <div id="superwidget-container">
+        <div id="tabs" data-role="navbar" class="ui-navbar ui-mini" role="navigation">
+            <ul class="ui-grid-b">
+                <li class="ui-block-a"><a id="superwidget-inventory-button" class="tab-button multiline ui-btn-active ui-btn ui-btn-up-a ui-btn-inline" href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-theme="a" data-inline="true"><span class="ui-btn-inner"><span class="ui-btn-text">Cars for Sale</span></span></a></li>
+                <li class="ui-block-b"><a id="superwidget-research-button" class="tab-button multiline ui-btn ui-btn-inline ui-btn-up-a" href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-theme="a" data-inline="true"><span class="ui-btn-inner"><span class="ui-btn-text">Specs &amp; Reviews</span></span></a></li>
+                <li class="ui-block-c"><a id="superwidget-dealers-button" class="tab-button multiline ui-btn ui-btn-up-a ui-btn-inline" href="#" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="span" data-theme="a" data-inline="true"><span class="ui-btn-inner"><span class="ui-btn-text">Dealers</span></span></a></li>
+            </ul>
+        </div>
+
+        <div id="superwidget-inventory-container" class="tab-content" style="display: block;">
+            <form id="inventory-form" name="inventory-form">
+                <div>
+                    <div class="option-block select-stocktype">
+                        <a class="stock-type-option ui-link">
+                            <div class="ui-radio"><input type="radio" name="stkTyp" value="N" checked="checked"></div>
+                            <label>New</label>
+                        </a>
+                        <a class="stock-type-option ui-link">
+                            <div class="ui-radio"><input type="radio" name="stkTyp" value="U"></div>
+                            <label>Used</label>
+                        </a>
+                        <a class="stock-type-option ui-link">
+                            <div class="ui-radio"><input type="radio" name="stkTyp" value="CPO"></div>
+                            <label>Certified</label>
+                        </a>
+                    </div>
+                    <div class="option-block select-make">
+                        <div class="current-option">
+                            <a href="#" class="ui-link">
+                                <p class="col-one">Make</p>
+                                <p class="col-two">
+                                    <span class="current-value">All Makes</span>
+                                    <span class="caret-right">&nbsp;</span>
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="option-block select-model">
+                        <div class="current-option">
+                            <a href="#" class="ui-link">
+                                <p class="col-one">Model</p>
+                                <p class="col-two">
+                                    <span class="current-value">All Models</span>
+                                    <span class="caret-right">&nbsp;</span>
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="option-block select-price">
+                        <div class="current-option">
+                            <a href="#" class="ui-link">
+                                <p class="col-one">Max Price</p>
+                                <p class="col-two">
+                                    <span class="current-value">No Max</span>
+                                    <span class="caret-right">&nbsp;</span>
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="option-block select-location last-option">
+                        <div class="current-option">
+                            <a href="#" class="ui-link">
+                                <p class="col-one">Location</p>
+                                <p class="col-two">
+                                    <span class="current-value">90001</span>
+                                    <span class="caret-right">&nbsp;</span>
+                                </p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="submit-row">
+                        <div data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-icon="null" data-iconpos="null" data-theme="r" class="ui-btn ui-btn-up-r ui-shadow ui-btn-corner-all ui-submit" aria-disabled="false"><span class="ui-btn-inner ui-btn-corner-all"><span class="ui-btn-text">Search</span></span><input data-role="button" type="submit" data-theme="r" class="primary ui-btn-hidden" value="Search" aria-disabled="false"></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div id="superwidget-research-container" class="tab-content" style="display: none;"></div>
+        <div id="superwidget-dealers-container" class="tab-content" style="display: none;"></div>
+    </div>
+
+    <div class="advertisement" id="2016-08-08T20:23:43.562Z"><div id="google_ads_iframe_/6427/cdn.cars.mobile/index_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/6427/cdn.cars.mobile/index_0" title="3rd party ad content" name="google_ads_iframe_/6427/cdn.cars.mobile/index_0" width="320" height="50" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" src="javascript:&quot;<html><body style='background:transparent'></body></html>&quot;" style="border: 0px; vertical-align: bottom;"></iframe></div><iframe id="google_ads_iframe_/6427/cdn.cars.mobile/index_0__hidden__" title="" name="google_ads_iframe_/6427/cdn.cars.mobile/index_0__hidden__" width="0" height="0" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" src="javascript:&quot;<html><body style='background:transparent'></body></html>&quot;" style="border: 0px; vertical-align: bottom; visibility: hidden; display: none;"></iframe></div>
+
+    <div id="are-we-there-yet-container">
+        <h2>Car Kids Grill the Car Experts</h2>
+        <p>See what happens when <a id="are-we-there-yet-container-tracker" href="https://cars.com/car-kids/?cmp=carkidsmobile" class="ui-link">kid reporters ask 2016 car review questions</a> that leave the experts floored</p>
+    </div>
+
+    <div id="estimate-container">
+        <h2>Estimate Payments &amp; Value</h2>
+        <ul data-role="listview" data-theme="a" class="sub-links ui-listview">
+            <li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="a" class="ui-btn ui-btn-up-a ui-btn-icon-right ui-li-has-arrow ui-li"><div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a id="calculator" href="/calculator/#calculator?" data-ajax="false" class="ui-link-inherit">Calculators</a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></div></li>
+            <li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="a" class="ui-btn ui-btn-up-a ui-btn-icon-right ui-li-has-arrow ui-li ui-li-last"><div class="ui-btn-inner ui-li"><div class="ui-btn-text"><a id="book-value" href="/book-value/#!widget" data-ajax="false" class="ui-link-inherit">Used Car Values</a></div><span class="ui-icon ui-icon-arrow-r ui-icon-shadow">&nbsp;</span></div></li>
+        </ul>
+    </div>
+
+    <div id="grand-awareness">
+        <div id="2016-08-08T20:23:44.596Z" style="display: none;"><div id="google_ads_iframe_/6427/cdn.cars.mobile/index_3__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/6427/cdn.cars.mobile/index_3" title="3rd party ad content" name="google_ads_iframe_/6427/cdn.cars.mobile/index_3" width="2" height="2" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" src="javascript:&quot;<html><body style='background:transparent'></body></html>&quot;" style="border: 0px; vertical-align: bottom;"></iframe></div><iframe id="google_ads_iframe_/6427/cdn.cars.mobile/index_3__hidden__" title="" name="google_ads_iframe_/6427/cdn.cars.mobile/index_3__hidden__" width="0" height="0" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" src="javascript:&quot;<html><body style='background:transparent'></body></html>&quot;" style="border: 0px; vertical-align: bottom; visibility: hidden; display: none;"></iframe></div>
+    </div>
+    <div id="reviews-container">
+        <ul class="reviews">
+            <h2>New Car Reviews</h2>
+            <p class="review-sub">Our experts report back with the latest</p>
+            <div class="review-row">
+                <li class="review">
+                    <div>
+                        <a class="review-image" href="/research/#!reviews/expert/Cadillac/XT5/2017">
+                            <img alt="2017 Cadillac XT5" src="http://graphics.cars.com/images/core/2017-Cadillac-XT5.jpg">
+                            <div class="review-image-overlay"></div>
+                        </a>
+                        <p class="review-car-name"><a href="/research/#!reviews/expert/Cadillac/XT5/2017">2017 Cadillac XT5</a></p>
+                        <p class="review-snippet">
+                            The XT5 deserves praise for an engine stop-start system that is among the least intrusive on the market.  <a href="/research/#!reviews/expert/Cadillac/XT5/2017">READ</a>
+                        </p>
+                    </div>
+                </li>
+                <li class="review">
+                    <div id="sponsored-review">
+                        <a class="ad review-image" href="http://www.cars.com/infiniti/q60/2017/">
+                            <div class="sponsored-container">
+                                <span class="sponsored">SPONSORED</span>
+                                <img alt="2017 Infiniti Q60" src="https://www.cstatic-images.com/stock/300x300/46/img-519124761-1470085063246.jpg">
+                            </div>
+                            <div class="review-image-overlay"></div>
+                        </a>
+                        <p class="review-car-name"><a href="http://www.cars.com/infiniti/q60/2017/">2017 Infiniti Q60</a></p>
+                        <p class="review-snippet">
+                            Review coming soon <a href="http://www.cars.com/infiniti/q60/2017/">READ</a>
+                        </p>
+
+                        <img class="pixels" src="https://ad.doubleclick.net/ddm/ad/N3340.Cars/B9497109.129014098;sz=1x1;ord=1311858685;dc_lat=;dc_rdid=;tag_for_child_directed_treatment=?" width="0" height="0">
+                        <img class="pixels" src="https://h.nexac.com/e/a-1316/s-5027/c-1077/g-3627.xgi?pkey=bijo15bijox40&amp;chpcm=&amp;chpsg=siteserved&amp;chpcr=&amp;chpck=&amp;rand=CACHEBUSTER&amp;chpth=129014098" width="0" height="0">
+                    </div>
+                </li>
+            </div>
+            <div class="review-row">
+                <li class="review">
+                    <div>
+                        <a class="review-image" href="/research/#!reviews/expert/Audi/A4/2017">
+                            <img alt="2017 Audi A4" src="http://graphics.cars.com/images/core/2017-Audi-A4.jpg">
+                            <div class="review-image-overlay"></div>
+                        </a>
+                        <p class="review-car-name"><a href="/research/#!reviews/expert/Audi/A4/2017">2017 Audi A4</a></p>
+                        <p class="review-snippet">
+                            The redesigned A4 feels nimble on winding roads, but there's a slight, clear understeer bias.  <a href="/research/#!reviews/expert/Audi/A4/2017">READ</a>
+                        </p>
+                    </div>
+                </li>
+                <li class="review">
+                    <div>
+                        <a class="review-image" href="/research/#!reviews/expert/Chrysler/Pacifica/2017">
+                            <img alt="2017 Chrysler Pacifica" src="http://graphics.cars.com/images/core/2017-Chrysler-Pacifica.jpg">
+                            <div class="review-image-overlay"></div>
+                        </a>
+                        <p class="review-car-name"><a href="/research/#!reviews/expert/Chrysler/Pacifica/2017">2017 Chrysler Pacifica</a></p>
+                        <p class="review-snippet">
+                            It's much less a chore to drive than Chrysler's outgoing minivan, with improved handling and maneuverability.  <a href="/research/#!reviews/expert/Chrysler/Pacifica/2017">READ</a>
+                        </p>
+                    </div>
+                </li>
+            </div>
+        </ul>
+    </div>
+</div>
